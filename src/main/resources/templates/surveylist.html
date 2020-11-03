@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.ThymeLeaf.org">
+<head>
+	<title>SurveyApp</title>
+	<meta  http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- <link type="text/css"rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" /> -->
+
+</head>
+<body>
+    <div><h1>Surveys</h1></div>
+
+<table>
+	<tr>
+	<th>ID</th>
+	<th>Header</th>
+	<th></th>
+	</tr>
+	<tr th:each="survey : ${ surveys }">
+	<td th:text="${ survey.getSurveyId() }">ID</td>
+	<td th:text="${ survey.getSurveyHeader() }">Header</td> 
+	</tr>
+</table>
+
+</body>
+</html>
