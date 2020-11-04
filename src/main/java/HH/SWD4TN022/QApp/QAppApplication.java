@@ -30,13 +30,21 @@ public class QAppApplication {
 			Survey s2 = new Survey("LOTR-survey");
 			
 			List<Question> questionsHP = new ArrayList<>();
-			Question q1 = new Question("What is your favourite Patronus?");
-			Question q2 = new Question("What is your favourite charm?");
+			Question q1 = new Question("What is your favourite Patronus?", s1);
+			Question q2 = new Question("What is your favourite charm?", s1);
+			
+			List<Question> questionsLOTR = new ArrayList<>();
+			Question q3 = new Question("What is your favourite character?", s2);
+			Question q4 = new Question("What is your favourite fantasy race?", s2);
+			
 			
 			questionsHP.add(q1);
 			questionsHP.add(q2);
+			questionsLOTR.add(q3);
+			questionsLOTR.add(q4);
 			
 			s1.setQuestions(questionsHP);
+			s2.setQuestions(questionsLOTR);
 			
 			surveyrepository.save(s1);
 			surveyrepository.save(s2);

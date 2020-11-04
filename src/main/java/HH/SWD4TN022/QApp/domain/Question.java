@@ -32,11 +32,7 @@ public class Question {
 		this.questionBody = questionBody;
 		this.survey = survey;
 	}
-	
-	public Question(String questionBody) {
-		this.questionBody=questionBody;
-		this.survey = null;
-	}
+
 	
 	public String getQuestionBody() {
 		return questionBody;
