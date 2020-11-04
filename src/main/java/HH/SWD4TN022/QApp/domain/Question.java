@@ -7,21 +7,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Question {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	public long id;
+	public long questionId;
 	
 	public String questionBody;
 	
 	
 	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "surveyid")
+	@JsonIgnoreProperties("questions")
+	@JoinColumn(name = "surveyId")
 	public Survey survey;
 
 	
