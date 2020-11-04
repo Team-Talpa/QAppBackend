@@ -16,21 +16,17 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-			<h1>Question By Id </h1>
-			GET /survey/{surveyId}<a href="survey/1"> /survey/1</a>
-			<p>Examples:</p>
+	<h1>Question By Id</h1>
+	GET /survey/{surveyId} <a href="survey/1"> /survey/1</a>
+	<p>Examples:</p>
 	<p>
-	<td th:text="${survey.surveyId}"></td>
-	<td th:text="${survey.surveyHeader}"></td>
-	[<br>
-  {
-    "surveyId": 1,
-    "surveyHeader": "Mikä Harry Potter -hahmo olet?"
-   
-  },<br>
-  
-]
+		</tr>
+
+		<td th:text="${ survey.getSurveyId(1) }"></td>
+		<td th:text="${ survey.getSurveyHeader(1) }"></td>
+		</tr>
+
 	</p>
-		
+
 </body>
 </html>
