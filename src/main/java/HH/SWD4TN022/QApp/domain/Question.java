@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Question {
 
+	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long questionId;
@@ -45,6 +47,14 @@ public class Question {
 	}
 	public void setSurvey(Survey survey) {
 		this.survey = survey;
+	}
+	
+	public long getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(long questionId) {
+		this.questionId = questionId;
 	}
 
 	@Override
