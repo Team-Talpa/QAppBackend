@@ -33,6 +33,11 @@ public class Question {
 		this.survey = survey;
 	}
 	
+	public Question(String questionBody) {
+		this.questionBody=questionBody;
+		this.survey = null;
+	}
+	
 	public String getQuestionBody() {
 		return questionBody;
 	}
@@ -44,6 +49,11 @@ public class Question {
 	}
 	public void setSurvey(Survey survey) {
 		this.survey = survey;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [questionBody=" + questionBody + "]";
 	}
 
 }

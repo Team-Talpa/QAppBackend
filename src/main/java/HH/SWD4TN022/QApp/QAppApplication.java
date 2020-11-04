@@ -1,5 +1,8 @@
 package HH.SWD4TN022.QApp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -7,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.Survey;
 import HH.SWD4TN022.QApp.domain.SurveyRepository;
 
@@ -24,6 +28,15 @@ public class QAppApplication {
 			
 			Survey s1 = new Survey("Harry Potter- survey");
 			Survey s2 = new Survey("LOTR-survey");
+			
+			List<Question> questionsHP = new ArrayList<>();
+			Question q1 = new Question("What is your favourite Patronus?");
+			Question q2 = new Question("What is your favourite charm?");
+			
+			questionsHP.add(q1);
+			questionsHP.add(q2);
+			
+			s1.setQuestions(questionsHP);
 			
 			surveyrepository.save(s1);
 			surveyrepository.save(s2);
