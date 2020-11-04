@@ -33,6 +33,12 @@ public class SurveyController {
 		return "surveylist";
 	}
 	
+	@GetMapping({"/homepage"})
+	public String homepage(Model model) {
+		model.addAttribute("surveys", surveyrepository.findAll());
+		return "homepage";
+	}
+	
 	@RequestMapping(value = "/addsurvey")
 	public String addquestion(Model model) {
 		model.addAttribute("survey", new Survey());
