@@ -20,34 +20,34 @@ import HH.SWD4TN022.QApp.domain.SurveyRepository;
 public class SurveyController {
 	
 	@Autowired
-	private SurveyRepository surveyrepository;  
+	private SurveyRepository surveyRepository;  
 
 	@RequestMapping(value="/survey/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyId) {	
-    	return surveyrepository.findById(surveyId);
+    	return surveyRepository.findById(surveyId);
     }  
 	
 	@GetMapping({"/", "/surveylist"})
-	public String surveyList(Model model) {
-		model.addAttribute("surveys", surveyrepository.findAll());
+	public String listSurveys(Model model) {
+		model.addAttribute("surveys", surveyRepository.findAll());
 		return "surveylist";
 	}
 	
-	@GetMapping({"/homepage"})
-	public String homepage(Model model) {
-		model.addAttribute("surveys", surveyrepository.findAll());
-		return "homepage";
+	@GetMapping({"/resthomepage"})
+	public String showRestHomepage(Model model) {
+		model.addAttribute("surveys", surveyRepository.findAll());
+		return "resthomepage";
 	}
 	
 	@RequestMapping(value = "/addsurvey")
-	public String addquestion(Model model) {
+	public String addSurvey(Model model) {
 		model.addAttribute("survey", new Survey());
 		return "addsurvey";
 	}
 	
 	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
-	public String savesurvey(Survey survey) {
-		surveyrepository.save(survey);
+	public String saveSurvey(Survey survey) {
+		surveyRepository.save(survey);
 		return "redirect:surveylist";
 	}
 	

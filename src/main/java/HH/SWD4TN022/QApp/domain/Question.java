@@ -12,22 +12,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Question {
 
-	
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long questionId;
 	
 	public String questionBody;
 	
-	
 	@ManyToOne
 	@JsonIgnoreProperties("questions")
 	@JoinColumn(name = "surveyId")
 	public Survey survey;
-
 	
-	public Question() {};
+	//TODO: check UML- classes from Teams: answers: List<Answer> --> Answer- class, AnswerRepository, AnswerController
+
+	public Question() {
+		
+	};
 	
 	public Question(String questionBody, Survey survey) {
 		super();
@@ -35,7 +35,6 @@ public class Question {
 		this.survey = survey;
 	}
 
-	
 	public String getQuestionBody() {
 		return questionBody;
 	}

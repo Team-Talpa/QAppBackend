@@ -26,6 +26,8 @@ public class QAppApplication {
 	public CommandLineRunner demo(SurveyRepository surveyrepository) {
 		return (args) -> {
 			
+			//TODO: V13, HH-survey
+			
 			Survey s1 = new Survey("Harry Potter- survey");
 			Survey s2 = new Survey("LOTR-survey");
 			
