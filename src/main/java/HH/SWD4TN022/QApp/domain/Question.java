@@ -1,11 +1,15 @@
 package HH.SWD4TN022.QApp.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -14,16 +18,19 @@ public class Question {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	public long questionId;
+	private long questionId;
 	
-	public String questionBody;
+	private String questionBody;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("questions")
 	@JoinColumn(name = "surveyId")
-	public Survey survey;
+	private Survey survey;
 	
 	//TODO: check UML- classes from Teams: answers: List<Answer> --> Answer- class, AnswerRepository, AnswerController
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+	@JsonIgnoreProperties("question")
+	private List<Answer> answers;
 
 	public Question() {
 		

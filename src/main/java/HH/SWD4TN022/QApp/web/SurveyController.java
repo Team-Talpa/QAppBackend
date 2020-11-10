@@ -28,7 +28,7 @@ public class SurveyController {
     }  
 	
 	//endpoint muotoon surveys
-	@GetMapping({"/", "/surveylist"})
+	@GetMapping({"/", "surveys", "/surveylist"})
 	public String listSurveys(Model model) {
 		model.addAttribute("surveys", surveyRepository.findAll());
 		return "surveylist";
