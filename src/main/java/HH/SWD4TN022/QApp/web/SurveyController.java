@@ -22,11 +22,12 @@ public class SurveyController {
 	@Autowired
 	private SurveyRepository surveyRepository;  
 
-	@RequestMapping(value="/survey/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/surveys/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyId) {	
     	return surveyRepository.findById(surveyId);
     }  
 	
+	//endpoint muotoon surveys
 	@GetMapping({"/", "/surveylist"})
 	public String listSurveys(Model model) {
 		model.addAttribute("surveys", surveyRepository.findAll());
