@@ -20,6 +20,13 @@ public class Answer {
 	@JsonIgnoreProperties("answers")
 	private Question question;
 	
+	public Answer() {
+		super();
+		this.answerBody = null;
+		this.question = null;
+		
+	}
+	
 	public Answer(String answerBody, Question question) {
 		super();
 		this.answerBody = answerBody;
@@ -47,7 +54,10 @@ public class Answer {
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Answer [answerBody=" + answerBody + "]";
+	}
 
 }

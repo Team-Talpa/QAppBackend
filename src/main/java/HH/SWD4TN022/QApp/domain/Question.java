@@ -1,5 +1,6 @@
 package HH.SWD4TN022.QApp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,21 +34,33 @@ public class Question {
 	private List<Answer> answers;
 
 	public Question() {
-		
+		this.questionBody = null;
+		this.survey = null;
+		this.answers = new ArrayList<>();
 	};
 	
 	public Question(String questionBody, Survey survey) {
 		super();
 		this.questionBody = questionBody;
 		this.survey = survey;
+		this.answers = new ArrayList<>();
+	}
+	
+	public Question(String questionBody, Survey survey, List<Answer> answers) {
+		super();
+		this.questionBody = questionBody;
+		this.survey = survey;
+		this.answers = answers;
 	}
 
 	public String getQuestionBody() {
 		return questionBody;
 	}
+	
 	public void setQuestionBody(String questionBody) {
 		this.questionBody = questionBody;
 	}
+	
 	public Survey getSurvey() {
 		return survey;
 	}
@@ -61,6 +74,14 @@ public class Question {
 
 	public void setQuestionId(long questionId) {
 		this.questionId = questionId;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 
 	@Override
