@@ -1,5 +1,6 @@
 package HH.SWD4TN022.QApp.web;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,15 @@ public class SurveyController {
     	return surveyRepository.findById(surveyId);
     }  
 	
-	@GetMapping({"/", "surveys", "/surveylist"})
+	@GetMapping({"/", "/surveylist"})
 	public String listSurveys(Model model) {
 		model.addAttribute("surveys", surveyRepository.findAll());
 		return "surveylist";
+	}
+	
+	@GetMapping("/surveys")
+	public @ResponseBody List<Survey> surveyListRest() {
+		return (List<Survey>) surveyRepository.findAll();
 	}
 	
 	@GetMapping({"/resthomepage"})
