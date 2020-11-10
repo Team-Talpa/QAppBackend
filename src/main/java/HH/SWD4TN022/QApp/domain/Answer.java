@@ -24,7 +24,6 @@ public class Answer {
 		super();
 		this.answerBody = null;
 		this.question = null;
-		
 	}
 	
 	public Answer(String answerBody, Question question) {

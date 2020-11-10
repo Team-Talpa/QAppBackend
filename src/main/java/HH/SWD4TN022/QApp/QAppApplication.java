@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import HH.SWD4TN022.QApp.domain.Answer;
 import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.Survey;
 import HH.SWD4TN022.QApp.domain.SurveyRepository;
@@ -35,6 +36,12 @@ public class QAppApplication {
 			Question q1 = new Question("What is your favourite Patronus?", s1);
 			Question q2 = new Question("What is your favourite charm?", s1);
 			
+			List<Answer> answersHP = new ArrayList<>();
+			Answer a1 = new Answer("The stag", q1);
+			Answer a2 = new Answer("The Phoenix", q1);
+			Answer a3 = new Answer("Levitation charm", q2);
+			Answer a4 = new Answer("Lumos", q2);
+			
 			List<Question> questionsLOTR = new ArrayList<>();
 			Question q3 = new Question("What is your favourite character?", s2);
 			Question q4 = new Question("What is your favourite fantasy race?", s2);
@@ -44,9 +51,15 @@ public class QAppApplication {
 			questionsHP.add(q2);
 			questionsLOTR.add(q3);
 			questionsLOTR.add(q4);
+			answersHP.add(a1);
+			answersHP.add(a2);
+			answersHP.add(a3);
+			answersHP.add(a4);
 			
 			s1.setQuestions(questionsHP);
 			s2.setQuestions(questionsLOTR);
+			
+			q1.setAnswers(answersHP);
 			
 			surveyrepository.save(s1);
 			surveyrepository.save(s2);
