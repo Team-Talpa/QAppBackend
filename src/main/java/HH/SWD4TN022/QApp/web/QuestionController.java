@@ -52,9 +52,8 @@ public class QuestionController {
 	//Tämä ei toimi vielä 
 	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
-		System.out.print("JKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJ");
 		questionRepository.save(question);
-		return "redirect:addquestion";
+		return "redirect:surveylist";
 	}
 	
 	

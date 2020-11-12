@@ -12,6 +12,7 @@
 <label for="questionBody">Question Body</label>
 <input type="text" id="questionBody" th:field="*{questionBody}" class="form-control"/>
 <div style="clear: both; display: block; height: 10px;"></div>
+<input type="hidden" th:field="*{survey.surveyId}" />
 
 <div style="clear: both; display: block; height: 10px;"></div>
 <input type="submit" class="btn-primary" value="Save"></input>
