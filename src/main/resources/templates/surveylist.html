@@ -19,7 +19,7 @@
 	<td th:text="${ survey.getSurveyId() }">ID</td>
 	<td th:text="${ survey.getSurveyHeader() }">Header</td>
 	<td><a th:href="@{/surveys/{id}(id=${survey.surveyId})}" class="btn btn-primary">View</a></td>
-	
+	<td><p><a th:href="@{/addquestion/{id}(id=${survey.surveyId})}" class="btn btn-success">Add Question</a></p></td>
 	</tr>
 </table>
 <p><a href="/addsurvey" class="btn btn-success">Add Survey</a></p>
