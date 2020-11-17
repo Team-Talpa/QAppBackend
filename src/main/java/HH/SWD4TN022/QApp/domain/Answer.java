@@ -37,6 +37,9 @@ public class Answer {
 		return answerId;
 	}
 
+	public void setAnswerId(Long answerId) {
+		this.answerId = answerId;
+	}
 
 	public String getAnswerBody() {
 		return answerBody;
