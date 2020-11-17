@@ -11,7 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import HH.SWD4TN022.QApp.domain.Answer;
+import HH.SWD4TN022.QApp.domain.AnswerRepository;
 import HH.SWD4TN022.QApp.domain.Question;
+import HH.SWD4TN022.QApp.domain.QuestionRepository;
 import HH.SWD4TN022.QApp.domain.Survey;
 import HH.SWD4TN022.QApp.domain.SurveyRepository;
 
@@ -24,49 +26,37 @@ public class QAppApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(SurveyRepository surveyrepository) {
+	public CommandLineRunner demo(SurveyRepository surveyRepository, QuestionRepository questionRepository, AnswerRepository answerRepository) {
 		return (args) -> {
 			
 			//TODO: V13, HH-survey
 			
-			Survey s1 = new Survey("Harry Potter- survey");
-			Survey s2 = new Survey("LOTR-survey");
+			Survey demoSurvey = new Survey("Hyvinvointikysely Haaga-Helian opiskelijoille");
 			
-			List<Question> questionsHP = new ArrayList<>();
-			Question q1 = new Question("What is your favourite Patronus?", s1);
-			Question q2 = new Question("What is your favourite charm?", s1);
-			
-			List<Answer> answersHP = new ArrayList<>();
-			Answer a1 = new Answer("The stag", q1);
-			Answer a2 = new Answer("The Phoenix", q1);
-			Answer a3 = new Answer("Levitation charm", q2);
-			Answer a4 = new Answer("Lumos", q2);
-			
-			List<Question> questionsLOTR = new ArrayList<>();
-			Question q3 = new Question("What is your favourite character?", s2);
-			Question q4 = new Question("What is your favourite fantasy race?", s2);
+			surveyRepository.save(demoSurvey);
 			
 			
-			questionsHP.add(q1);
-			questionsHP.add(q2);
-			questionsLOTR.add(q3);
-			questionsLOTR.add(q4);
-			answersHP.add(a1);
-			answersHP.add(a2);
-			answersHP.add(a3);
-			answersHP.add(a4);
+			Question q1 = new Question("Mikä on koulutusohjelmasi?", demoSurvey);
+			Question q2 = new Question("Milloin olet aloittanut opintosi Haaga-Heliassa? (syksy/kevät ja vuosi)", demoSurvey);
+			Question q3 = new Question("Miltä etätyöskentely on sinusta tuntunut?", demoSurvey);
+			Question q4 = new Question("Ovatko opintosi edenneet poikkeustilanteesta huolimatta tavoitteesi mukaisesti?", demoSurvey);
+			Question q5 = new Question("Aiheuttaako etätyöskentely sinulle lisätyötä verrattuna lähiopetukseen?", demoSurvey);
+			Question q6 = new Question("Koetko, että tarvitsisit tukea etäopiskeluun? Jos tarvitset, niin kerro omin sanoin millaista tukea tarvitsisit.", demoSurvey);
+			Question q7 = new Question("Tiedätkö millaisia opintoihin liittyviä tukipalveluita YTHS ja Haaga-Helia tarjoavat opiskelijoille?", demoSurvey);
 			
-			s1.setQuestions(questionsHP);
-			s2.setQuestions(questionsLOTR);
+			questionRepository.save(q1);
+			questionRepository.save(q2);
+			questionRepository.save(q3);
+			questionRepository.save(q4);
+			questionRepository.save(q5);
+			questionRepository.save(q6);
+			questionRepository.save(q7);
 			
-			q1.setAnswers(answersHP);
 			
-			surveyrepository.save(s1);
-			surveyrepository.save(s2);
 			
 			log.info("list all surveys");
 
-			  for(Survey s : surveyrepository.findAll()) {
+			  for(Survey s : surveyRepository.findAll()) {
 				log.info(s.toString());
 
 			}
