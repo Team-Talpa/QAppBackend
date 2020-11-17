@@ -15,20 +15,78 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>Question By Id</h1>
-	GET /surveys/{surveyId} <a href="surveys/1"> /survey/1</a>
-	<p>Examples:</p>
-	<p>
-{"surveyId":1,
-<br>&nbsp;"surveyHeader":"Harry Potter- survey",
-<br>&nbsp; &nbsp;"questions":<br>[<br>&nbsp;{<br> &nbsp;"questionId":2,
-<br>&nbsp;  "questionBody":"What is your favourite Patronus?"<br>&nbsp;},
-<br>&nbsp; {<br>&nbsp;"questionId":3,<br>&nbsp;"questionBody":"What is your favourite charm?"
-<br>&nbsp; &nbsp;}
-<br>&nbsp;]
-<br>}
 
+	<h1>REST Home Page</h1><br>
+	
+<div class="container">
+	<h2>All Surveys</h2>
+	Method: GET Endpoint: <a href="/surveys">/surveys</a><br>
+	<p>JSON Example:</p>
+	<p>
+	{<br>"surveyId": 1,
+	<br>"surveyHeader": "Harry Potter- survey",
+	<br>"questions": [
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;{
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionId": 2,
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionBody": "What is your favourite Patronus?",
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"answers": [
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+	<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"answerId": 3,
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"answerBody": "The Stag"
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
+	<br>},
+	<br>{
+	<br>"surveyId": 8,
+	<br>"surveyHeader":"LOTR-survey",
+	<br>"questions": [
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;{
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionId": 9,
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionBody": "What is your favourite character?",
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"answers": []
+	<br>}
+	</p>
+	
+	<h2>Survey By Id</h2>
+	GET /surveys/{surveyId} <a href="surveys/1"> /surveys/1</a>
+	<p>JSON Example:</p>
+	<p>
+	{<br>"surveyId":1,
+	<br>"surveyHeader":"Harry Potter- survey",
+	<br>"questions": [
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;{
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionId":2,
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionBody":"What is your favourite Patronus?",
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;},
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;{
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionId":3,
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionBody":"What is your favourite charm?"
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;}
+	<br>&nbsp;]
+	<br>}
 	</p>
 
+	<h2>New Answer</h2>
+	POST /answers/{id} (Test with <a href="https://www.postman.com/">PostMan</a>/etc.)
+	<p>JSON Example:</p>
+	<p>
+	{<br>&nbsp;&nbsp;&nbsp;&nbsp;"answerBody": "The Mouse3"
+	<br>}​​​​
+	</p>
+	
+	<h2>New Answer with Question Id</h2>
+	POST /saveanswer (Test with <a href="https://www.postman.com/">PostMan</a>/etc.)
+	<p>JSON Example:</p>
+	<p>
+	{<br>&nbsp;&nbsp;&nbsp;&nbsp;"answerBody": "The Mouse3"
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;"question": { 
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"questionId": 2
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;}​​
+	<br>}
+	</p>
+
+</div>
+<br>
+<br>
 </body>
 </html>
