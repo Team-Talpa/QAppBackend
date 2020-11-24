@@ -27,7 +27,7 @@ public class QuestionController {
 	private SurveyRepository surveyRepository;
 
 	/* TODO: does not work, template does not exist
-	@RequestMapping("/questions")
+	@RequestMapping("/questions")+
 	public String questions(Model model) {
 		model.addAttribute("questions", questionRepository.findAll());
 		return "questions";
