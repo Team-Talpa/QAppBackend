@@ -29,6 +29,10 @@ public class Question {
 	@JoinColumn(name = "surveyId")
 	private Survey survey;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+	@JsonIgnoreProperties("question")
+	private List<AnswerOption> answerOptions;
+	
 	//TODO: check UML- classes from Teams: answers: List<Answer> --> Answer- class, AnswerRepository, AnswerController
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
 	@JsonIgnoreProperties("question")
@@ -38,6 +42,7 @@ public class Question {
 		this.questionBody = null;
 		this.survey = null;
 		this.answers = new ArrayList<>();
+		this.answerOptions = new ArrayList<>();
 	};
 	
 	public Question(String questionBody, Survey survey) {
@@ -69,7 +74,6 @@ public class Question {
 		this.survey = survey;
 	}
 	
-	
 	public long getQuestionId() {
 		return questionId;
 	}
@@ -84,6 +88,14 @@ public class Question {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+	
+	public List<AnswerOption> getAnswerOptions() {
+		return answerOptions;
+	}
+
+	public void setAnswerOptions(List<AnswerOption> answerOptions) {
+		this.answerOptions = answerOptions;
 	}
 
 	@Override
