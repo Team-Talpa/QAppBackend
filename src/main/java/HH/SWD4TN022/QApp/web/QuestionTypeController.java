@@ -31,10 +31,12 @@ public class QuestionTypeController {
 		return (List<QuestionType>) questionTypeRepository.findAll();
 	}
 	
-	//Endpoint retrieves a single questiontype with the specified id	
+	//Endpoint retrieves a single questiontype with the specified id with REST
 	@GetMapping("/questiontypes/{id}")
 	public @ResponseBody Optional<QuestionType> findQuestionTypeRest(@PathVariable("id") Long questionTypeId) {
 		return questionTypeRepository.findById(questionTypeId);
 	}
+	
+	
 	
 }

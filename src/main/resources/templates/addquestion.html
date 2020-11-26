@@ -17,8 +17,10 @@
 <h2>Add Question</h2>
 
 <form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
-	<label for="questionBody">Question</label>
+	<label for="questionBody">Question:</label>
 	<textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/></textarea>
+	
+	
 	<div style="clear: both; display: block; height: 10px;"></div>
 	<input type="hidden" th:field="*{survey.surveyId}" />
 
