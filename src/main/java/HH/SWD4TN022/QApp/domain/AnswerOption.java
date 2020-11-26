@@ -29,10 +29,17 @@ public class AnswerOption {
 		this.answerOptionBody = answerOptionBody;
 	}
 	
-	public AnswerOption(long answerOptionId, String answerOptionBody) {
+	public AnswerOption(String answerOptionBody) {
 		super();
 		this.answerOptionId = answerOptionId;
 		this.answerOptionBody = answerOptionBody;
+	}
+	
+	public AnswerOption(String answerOptionBody, Question question) {
+		super();
+		this.answerOptionId = answerOptionId;
+		this.answerOptionBody = answerOptionBody;
+		this.question = question;
 	}
 
 	public long getAnswerOptionId() {

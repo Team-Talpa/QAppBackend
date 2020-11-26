@@ -45,13 +45,15 @@ public class QuestionController {
 	public String addQuestionTo(@PathVariable("id") Long surveyId, Model model) {
 
 		Question question = new Question();
+		//questionType 
+		//if questionType = radiobutton
+		//
 		Survey survey = surveyRepository.findById(surveyId).get();
 		question.setSurvey(survey);
 		model.addAttribute("question", question);
 		return "addquestion";
 	}
 	
-	//Tämä ei toimi vielä 
 	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		questionRepository.save(question);
