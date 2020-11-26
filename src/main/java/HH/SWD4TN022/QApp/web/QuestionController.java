@@ -25,6 +25,7 @@ public class QuestionController {
 	
 	@Autowired
 	private SurveyRepository surveyRepository;
+	
 
 	/* TODO: does not work, template does not exist
 	@RequestMapping("/questions")+
@@ -34,20 +35,19 @@ public class QuestionController {
 	}
 	*/
 	
-	//TODO: addquestion.html-template does not exist
+	//add question without survey id
 	@RequestMapping(value = "/addquestion")
 	public String addQuestion(Model model) {
 		model.addAttribute("question", new Question());
 		return "addquestion";
 	}
 	
+	//adds a new question
 	@RequestMapping(value = "/addquestion/{id}")
 	public String addQuestionTo(@PathVariable("id") Long surveyId, Model model) {
 
 		Question question = new Question();
-		//questionType 
-		//if questionType = radiobutton
-		//
+		
 		Survey survey = surveyRepository.findById(surveyId).get();
 		question.setSurvey(survey);
 		model.addAttribute("question", question);
