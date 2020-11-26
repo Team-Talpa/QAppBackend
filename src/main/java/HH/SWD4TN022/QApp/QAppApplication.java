@@ -29,7 +29,7 @@ public class QAppApplication {
 	public CommandLineRunner demo(SurveyRepository surveyRepository, QuestionRepository questionRepository, AnswerRepository answerRepository) {
 		return (args) -> {
 			
-			//TODO: V13, HH-survey
+			//V13, HH-demosurvey
 			
 			Survey demoSurvey = new Survey("Hyvinvointikysely Haaga-Helian opiskelijoille");
 			
