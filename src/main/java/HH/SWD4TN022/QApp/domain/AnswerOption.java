@@ -25,19 +25,15 @@ public class AnswerOption {
 
 	public AnswerOption() {
 		super();
-		this.answerOptionId = answerOptionId;
-		this.answerOptionBody = answerOptionBody;
 	}
 	
 	public AnswerOption(String answerOptionBody) {
 		super();
-		this.answerOptionId = answerOptionId;
 		this.answerOptionBody = answerOptionBody;
 	}
 	
 	public AnswerOption(String answerOptionBody, Question question) {
 		super();
-		this.answerOptionId = answerOptionId;
 		this.answerOptionBody = answerOptionBody;
 		this.question = question;
 	}
@@ -56,6 +52,14 @@ public class AnswerOption {
 
 	public void setAnswerOptionBody(String answerOptionBody) {
 		this.answerOptionBody = answerOptionBody;
+	}
+	
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	@Override
