@@ -19,6 +19,8 @@ import HH.SWD4TN022.QApp.domain.AnswerOption;
 import HH.SWD4TN022.QApp.domain.AnswerOptionRepository;
 import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.QuestionRepository;
+import HH.SWD4TN022.QApp.domain.QuestionType;
+import HH.SWD4TN022.QApp.domain.Survey;
 
 @CrossOrigin
 @Controller
@@ -29,6 +31,7 @@ public class AnswerOptionController {
 	
 	@Autowired
 	private QuestionRepository questionRepository; 
+	
 	//pitää pystyä hakemaan kaikki vastausvaihtoehdot GET answeroptions
 	@GetMapping("/answeroptions")
 	public @ResponseBody List<AnswerOption> answerOptionListRest() {
@@ -48,11 +51,24 @@ public class AnswerOptionController {
 		return "addansweroption";
 	}
 	
-	//method to save answerOption, returns to addquestion-template
+	//method to add answerOption to a question with question id
+	@RequestMapping(value = "/addansweroption/{id}")
+	public String addAnswerOption(@PathVariable("id") Long questionId, Model model) {
+			
+			Question question = questionRepository.findById(questionId).get();
+			AnswerOption answeroption = new AnswerOption();
+			answeroption.setQuestion(question);
+			
+			model.addAttribute("answerOption", answeroption);
+			return "addansweroption";
+	}
+
+	//method to save answerOption, returns to surveylist-template
 	@RequestMapping(value = "/saveansweroption", method = RequestMethod.POST)
 	public String saveAnswerOption(AnswerOption answerOption) {
+	
 		answerOptionRepository.save(answerOption);
-		return "redirect:questionlist";
+		return "redirect:surveylist";
 	}
 	
 

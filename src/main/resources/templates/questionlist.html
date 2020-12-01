@@ -24,8 +24,18 @@
 	<tr th:each="question : ${ questions }">
 	<td th:text="${ question.getQuestionId() }">ID</td>
 	<td th:text="${ question.getQuestionBody() }">Header</td>
+	
+	
+	<table>
+	<tr th:each="answeroption : ${ question.answerOptions }">
+	<td>&nbsp;&nbsp;&#8226;<td th:text="${ answeroption.answerOptionBody }">Header</td></td>
+	</tr>	
+	</table>
+	<a th:if="${question.questionType.questionTypeBody != 'text'}" th:href="@{/addansweroption/{id}(id=${question.questionId})}" class="btn btn-warning">Add Answer Option</a>
+	<p></p>
 	</tr>
 </table>
+<p>&nbsp;<a th:href="@{/addquestion/{id}(id=${survey.surveyId})}" class="btn btn-success">Add Question</a></p>
 <p>&nbsp;<a href="/surveylist" class="btn btn-warning">Return</a></p>
 </body>
 </html>

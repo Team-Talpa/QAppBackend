@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.QuestionRepository;
+import HH.SWD4TN022.QApp.domain.QuestionType;
+import HH.SWD4TN022.QApp.domain.QuestionTypeRepository;
 import HH.SWD4TN022.QApp.domain.Survey;
 import HH.SWD4TN022.QApp.domain.SurveyRepository;
 
@@ -26,6 +28,9 @@ public class QuestionController {
 	
 	@Autowired
 	private SurveyRepository surveyRepository;
+	
+	@Autowired
+	private QuestionTypeRepository questiontypeRepository;
 	
 	
 	@RequestMapping("/questionlist/{id}")
@@ -53,6 +58,12 @@ public class QuestionController {
 		Survey survey = surveyRepository.findById(surveyId).get();
 		question.setSurvey(survey);
 		model.addAttribute("question", question);
+		
+		List<QuestionType> types = (List<QuestionType>) questiontypeRepository.findAll();
+		
+		model.addAttribute("questiontypes", types);
+		
+		System.out.print(questiontypeRepository.findAll());
 		return "addquestion";
 	}
 	
