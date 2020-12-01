@@ -1,8 +1,5 @@
 package HH.SWD4TN022.QApp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +15,8 @@ import HH.SWD4TN022.QApp.domain.AnswerOptionRepository;
 import HH.SWD4TN022.QApp.domain.AnswerRepository;
 import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.QuestionRepository;
+import HH.SWD4TN022.QApp.domain.QuestionType;
+import HH.SWD4TN022.QApp.domain.QuestionTypeRepository;
 import HH.SWD4TN022.QApp.domain.Survey;
 import HH.SWD4TN022.QApp.domain.SurveyRepository;
 
@@ -31,7 +30,7 @@ public class QAppApplication {
 	
 	@Bean
 	public CommandLineRunner demo(SurveyRepository surveyRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, 
-			AnswerOptionRepository answeroptionrepository) {
+			AnswerOptionRepository answerOptionRepository, QuestionTypeRepository questionTypeRepository) {
 		
 		return (args) -> {
 			
@@ -70,11 +69,21 @@ public class QAppApplication {
 			
 			surveyRepository.save(answerSurvey);
 			
-			Question q1 = new Question("Ruokailetko millä kampuksella?", answerSurvey);
-			Question q2 = new Question("Kuinka monta kertaa viikossa käyt koulussa syömässä?", answerSurvey);
-			Question q3 = new Question("Monta kertaa viikosta otat kasvisvaihtoehdon?", answerSurvey);
-			Question q4 = new Question("Ostatko Premium vai Halpis-ruoan?", answerSurvey);
-			Question q5 = new Question("1-5 Kuinka tyytyväinen olet kouluruokaan?", answerSurvey);
+			//demoa varten kysymystyypit
+			//täytyy säilyttää jos muu demodata poistetaan!!!!!
+			QuestionType text = new QuestionType("text");
+			QuestionType radio = new QuestionType("radio");
+			QuestionType checkbox = new QuestionType("checkbox");
+			
+			questionTypeRepository.save(text);
+			questionTypeRepository.save(radio);
+			questionTypeRepository.save(checkbox);
+			
+			Question q1 = new Question("Ruokailetko millä kampuksella?", checkbox, answerSurvey);
+			Question q2 = new Question("Kuinka monta kertaa viikossa käyt koulussa syömässä?", radio, answerSurvey);
+			Question q3 = new Question("Monta kertaa viikosta otat kasvisvaihtoehdon?", radio, answerSurvey);
+			Question q4 = new Question("Ostatko Premium vai Halpis-ruoan?", radio, answerSurvey);
+			Question q5 = new Question("1-5 Kuinka tyytyväinen olet kouluruokaan?", radio, answerSurvey);
 			
 			AnswerOption q5a1 = new AnswerOption("1" , q5);
 			AnswerOption q5a2 = new AnswerOption("2" , q5);
@@ -97,11 +106,33 @@ public class QAppApplication {
 			AnswerOption q1a2 = new AnswerOption("Pasila" , q1);
 			AnswerOption q1a3 = new AnswerOption("Haaga" , q1);
 			
+			
 			questionRepository.save(q1);
 			questionRepository.save(q2);
 			questionRepository.save(q3);
 			questionRepository.save(q4);
 			questionRepository.save(q5);
+			
+			answerOptionRepository.save(q5a1);
+			answerOptionRepository.save(q5a2);
+			answerOptionRepository.save(q5a3);
+			answerOptionRepository.save(q5a4);
+			answerOptionRepository.save(q5a5);
+			
+			answerOptionRepository.save(q4a1);
+			answerOptionRepository.save(q4a2);
+			
+			answerOptionRepository.save(q3a1);
+			answerOptionRepository.save(q3a2);
+			answerOptionRepository.save(q3a3);
+			
+			answerOptionRepository.save(q2a1);
+			answerOptionRepository.save(q2a2);
+			answerOptionRepository.save(q2a3);
+			
+			answerOptionRepository.save(q1a1);
+			answerOptionRepository.save(q1a2);
+			answerOptionRepository.save(q1a3);
 			
 			answerRepository.save(new Answer(q1a2.getAnswerOptionBody(), q1));
 			answerRepository.save(new Answer(q2a3.getAnswerOptionBody(), q2));

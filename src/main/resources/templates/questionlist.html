@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <div><h1>Surveys</h1></div>
+    <div><h1>Questions</h1></div>
 
 <table>
 	<tr>
@@ -21,16 +21,11 @@
 	<th>Header</th>
 	<th></th>
 	</tr>
-	<tr th:each="survey : ${ surveys }">
-	<td th:text="${ survey.getSurveyId() }">ID</td>
-	<td th:text="${ survey.getSurveyHeader() }">Header</td>
-	
-	<td>&nbsp;<a th:href="@{/questionlist/{id}(id=${survey.surveyId})}" class="btn btn-warning">Questions</a></td>
-	
-	<td> &nbsp;<a th:href="@{/surveys/{id}(id=${survey.surveyId})}" class="btn btn-primary"> View</a></td>
-	<td> &nbsp;<a th:href="@{/addquestion/{id}(id=${survey.surveyId})}" class="btn btn-success"> Add Question</a></td>
+	<tr th:each="question : ${ questions }">
+	<td th:text="${ question.getQuestionId() }">ID</td>
+	<td th:text="${ question.getQuestionBody() }">Header</td>
 	</tr>
 </table>
-<p>&nbsp;<a href="/addsurvey" class="btn btn-warning">Add Survey</a></p>
+<p>&nbsp;<a href="/surveylist" class="btn btn-warning">Return</a></p>
 </body>
 </html>

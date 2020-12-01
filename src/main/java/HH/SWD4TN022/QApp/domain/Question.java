@@ -24,6 +24,13 @@ public class Question {
 	
 	private String questionBody;
 	
+	
+	@ManyToOne
+	@JsonIgnoreProperties("questions")
+	@JoinColumn(name = "questionTypeId")
+	private QuestionType questionType;
+	
+	
 	@ManyToOne
 	@JsonIgnoreProperties("questions")
 	@JoinColumn(name = "surveyId")
@@ -45,16 +52,18 @@ public class Question {
 		this.answerOptions = new ArrayList<>();
 	};
 	
-	public Question(String questionBody, Survey survey) {
+	public Question(String questionBody, QuestionType questionType, Survey survey) {
 		super();
 		this.questionBody = questionBody;
+		this.questionType = questionType;
 		this.survey = survey;
 		this.answers = new ArrayList<>();
 	}
 	
-	public Question(String questionBody, Survey survey, List<Answer> answers) {
+	public Question(String questionBody, QuestionType questionType, Survey survey, List<Answer> answers) {
 		super();
 		this.questionBody = questionBody;
+		this.questionType = questionType;
 		this.survey = survey;
 		this.answers = answers;
 	}
@@ -67,6 +76,14 @@ public class Question {
 		this.questionBody = questionBody;
 	}
 	
+	public QuestionType getQuestionType() {
+		return questionType;
+	}
+
+	public void setQuestionType(QuestionType questionType) {
+		this.questionType = questionType;
+	}
+
 	public Survey getSurvey() {
 		return survey;
 	}

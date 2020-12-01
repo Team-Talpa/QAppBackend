@@ -1,5 +1,6 @@
 package HH.SWD4TN022.QApp.web;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,14 @@ public class QuestionController {
 	@Autowired
 	private SurveyRepository surveyRepository;
 	
-
-	/* TODO: does not work, template does not exist
-	@RequestMapping("/questions")+
-	public String questions(Model model) {
-		model.addAttribute("questions", questionRepository.findAll());
-		return "questions";
+	
+	@RequestMapping("/questionlist/{id}")
+	public String questions(@PathVariable("id") Long surveyId, Model model) {
+		Survey survey = surveyRepository.findById(surveyId).get();
+		model.addAttribute("questions", survey.getQuestions());
+		return "questionlist";
 	}
-	*/
+
 	
 	//add question without survey id
 	@RequestMapping(value = "/addquestion")
