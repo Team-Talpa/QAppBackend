@@ -32,6 +32,7 @@ public class QuestionController {
 	public String questions(@PathVariable("id") Long surveyId, Model model) {
 		Survey survey = surveyRepository.findById(surveyId).get();
 		model.addAttribute("questions", survey.getQuestions());
+		model.addAttribute("survey", survey);
 		return "questionlist";
 	}
 
