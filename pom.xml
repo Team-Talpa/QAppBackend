@@ -46,12 +46,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
+		<!-- tämä toimii JUnit 5:n kanssa
+		  <exclusions>
 				<exclusion>
 					<groupId>junit</groupId>
 					<artifactId>junit</artifactId>
 				</exclusion>
-			</exclusions>
+			</exclusions>-->	
+		</dependency>
+		
+		<!-- tämä toimii JUnit 4:n kanssa -->
+		<dependency>
+		 <groupId>junit</groupId>
+ 		 <artifactId>junit</artifactId>
 		</dependency>
 		
 		<dependency>
