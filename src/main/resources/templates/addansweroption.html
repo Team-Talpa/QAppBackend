@@ -10,17 +10,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
+
 <body>
 
 <div class="container">
 
 <h2>Add Answer Option</h2>
 
-<form th:object="${answeroption}" th:action="@{../saveansweroption}" action="#" method="post">
-	<label for="answerOptionBody">Question</label>
-	<textarea type="text" style="width:400px;" rows="3" id="answerOptionBody" th:field="*{answerOptionBody}" class="form-control "/></textarea>
-	<!-- <div style="clear: both; display: block; height: 10px;"></div>
-	<input type="hidden" th:field="*{question.quesitonId}" />  -->
+<form th:object="${answerOption}" th:action="@{../saveansweroption}" action="#" method="post">
+ <label for="answerOptionBody">Answer Option Body</label>
+ 
+	<textarea type="text" style="widht:400px;" rows="3" id="answerOptionBody" th:field="*{answerOptionBody}" class="form-control "/></textarea>
+	
+	<div style="clear: both; display: block; height: 10px;"></div>
+	<input type="hidden" th:field="*{question.questionId}" />
+
 
 	<div style="clear: both; display: block; height: 10px;"></div>
 
