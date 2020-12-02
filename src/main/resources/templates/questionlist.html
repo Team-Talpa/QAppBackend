@@ -32,7 +32,7 @@
 		</tr>	
 	</table>
 	<!-- hides the add answeroption-button if questiontype is textfield-->
-	<a th:if="${question.questionType.questionTypeBody != 'text'}" th:href="@{/addansweroption/{id}(id=${question.questionId})}" class="btn btn-warning">Add Answer Option</a>
+	<a th:if="${question.questionType.questionTypeBody != 'textfield'}" th:href="@{/addansweroption/{id}(id=${question.questionId})}" class="btn btn-warning">Add Answer Option</a>
 	<p></p>
 	</tr>
 </table>
