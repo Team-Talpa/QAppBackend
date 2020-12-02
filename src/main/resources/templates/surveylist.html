@@ -21,6 +21,7 @@
 	<th>Header</th>
 	<th></th>
 	</tr>
+	<!-- lists all surveys in the app-->
 	<tr th:each="survey : ${ surveys }">
 	<td th:text="${ survey.getSurveyId() }">ID</td>
 	<td th:text="${ survey.getSurveyHeader() }">Header</td>

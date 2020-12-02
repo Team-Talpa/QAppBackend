@@ -32,12 +32,12 @@ public class AnswerOptionController {
 	@Autowired
 	private QuestionRepository questionRepository; 
 	
-	//pitää pystyä hakemaan kaikki vastausvaihtoehdot GET answeroptions
+	//method retrieves list of all answeroptions
 	@GetMapping("/answeroptions")
 	public @ResponseBody List<AnswerOption> answerOptionListRest() {
 		return (List<AnswerOption>) answerOptionRepository.findAll();
 	}	
-	//pitää pystyä hakemaan yksittäinen vastausvaihtoehto GET answeroptions/id
+	//method retrieves single answeroption with answeroptionId
 	@RequestMapping(value="/answeroptions/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<AnswerOption> findAnswerOptionRest(@PathVariable("id") Long answerOptionId) {	
     	return answerOptionRepository.findById(answerOptionId);

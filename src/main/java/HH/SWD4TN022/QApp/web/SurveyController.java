@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import HH.SWD4TN022.QApp.domain.Question;
-import HH.SWD4TN022.QApp.domain.QuestionRepository;
 import HH.SWD4TN022.QApp.domain.Survey;
 import HH.SWD4TN022.QApp.domain.SurveyRepository;
 
@@ -26,32 +24,35 @@ public class SurveyController {
 	
 	@Autowired
 	private SurveyRepository surveyRepository;  
-	
-	@Autowired
-	private QuestionRepository questionRepository; 
 
-	@RequestMapping(value="/surveys/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyId) {	
-    	return surveyRepository.findById(surveyId);
-    }  
 	
-	@GetMapping({"/", "/surveylist"})
-	public String listSurveys(Model model) {
-		model.addAttribute("surveys", surveyRepository.findAll());
-		return "surveylist";
-	}
-	
+	//REST method to retrieve a list of all surveys
 	@GetMapping("/surveys")
 	public @ResponseBody List<Survey> surveyListRest() {
 		return (List<Survey>) surveyRepository.findAll();
 	}
 	
+	//REST method to retrieve a single survey by surveyId
+	@RequestMapping(value="/surveys/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyId) {	
+    	return surveyRepository.findById(surveyId);
+    }  
+	
+	//retrives a list of all surveys
+	@GetMapping({"/", "/surveylist"})
+	public String listSurveys(Model model) {
+		model.addAttribute("surveys", surveyRepository.findAll());
+		return "surveylist";
+	}
+
+	//retrieves a list of all surveys to REST homepage
 	@GetMapping({"/resthomepage"})
 	public String showRestHomepage(Model model) {
 		model.addAttribute("surveys", surveyRepository.findAll());
 		return "resthomepage";
 	}
 	
+	//adds a new survey
 	@RequestMapping(value = "/addsurvey")
 	public String addSurvey(Model model) {
 
@@ -60,7 +61,7 @@ public class SurveyController {
 		return "addsurvey";
 	}
 	
-	
+	//saves a survey
 	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
 	public String saveSurvey(Survey survey) {
 		//survey.setQuestions(questions); Liittyy alla olevaan keskeneäiseen

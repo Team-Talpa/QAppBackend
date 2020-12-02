@@ -18,7 +18,7 @@
 <h2>Add Question</h2>
 
 <form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
- <label for="questionBody">Question Body</label>
+ <label for="questionBody">Question</label>
 
 <textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/></textarea>    
 	
@@ -28,7 +28,8 @@
 	<label for="questiontypelist">Question type</label>
 	<select id="questiontypelist" th:field="*{questionType}" class="form-control">
 	
-	<option th:each="mita: ${ questiontypes }" th:value="${mita.questionTypeId}" th:text="${mita.questionTypeBody}"></option>
+	<!-- lists all questiontypes to dropdown-menu -->
+	<option th:each="qType: ${ questiontypes }" th:value="${qType.questionTypeId}" th:text="${qType.questionTypeBody}"></option>
 	
 	</select>
 

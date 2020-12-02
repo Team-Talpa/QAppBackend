@@ -32,7 +32,7 @@ public class QuestionController {
 	@Autowired
 	private QuestionTypeRepository questiontypeRepository;
 	
-	
+	//retrieves a list of questions for a survey with surveyId
 	@RequestMapping("/questionlist/{id}")
 	public String questions(@PathVariable("id") Long surveyId, Model model) {
 		Survey survey = surveyRepository.findById(surveyId).get();
@@ -49,7 +49,7 @@ public class QuestionController {
 		return "addquestion";
 	}
 	
-	//adds a new question
+	//adds a new question to the survey with surveyId
 	@RequestMapping(value = "/addquestion/{id}")
 	public String addQuestionTo(@PathVariable("id") Long surveyId, Model model) {
 
@@ -63,10 +63,10 @@ public class QuestionController {
 		
 		model.addAttribute("questiontypes", types);
 		
-		System.out.print(questiontypeRepository.findAll());
 		return "addquestion";
 	}
 	
+	//saves question 
 	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		questionRepository.save(question);
@@ -76,7 +76,6 @@ public class QuestionController {
 	
 	//TODO
 	//editQuestion() --> editquestion.html 
-	//saveQuestion()
 	//deleteQuestion(), essential crud-function, needed for sprint 1?
 	
 }

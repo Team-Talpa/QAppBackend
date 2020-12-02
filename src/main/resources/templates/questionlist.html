@@ -21,16 +21,17 @@
 	<th>Header</th>
 	<th></th>
 	</tr>
+	<!-- lists all questions from one survey-->
 	<tr th:each="question : ${ questions }">
 	<td th:text="${ question.getQuestionId() }">ID</td>
 	<td th:text="${ question.getQuestionBody() }">Header</td>
-	
-	
 	<table>
-	<tr th:each="answeroption : ${ question.answerOptions }">
-	<td>&nbsp;&nbsp;&#8226;<td th:text="${ answeroption.answerOptionBody }">Header</td></td>
-	</tr>	
+		<!-- lists all answeroptions of the question -->
+		<tr th:each="answeroption : ${ question.answerOptions }">
+		<td>&nbsp;&nbsp;&#8226;<td th:text="${ answeroption.answerOptionBody }">Header</td></td>
+		</tr>	
 	</table>
+	<!-- hides the add answeroption-button if questiontype is textfield-->
 	<a th:if="${question.questionType.questionTypeBody != 'text'}" th:href="@{/addansweroption/{id}(id=${question.questionId})}" class="btn btn-warning">Add Answer Option</a>
 	<p></p>
 	</tr>
