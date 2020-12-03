@@ -71,8 +71,8 @@ public class QAppApplication {
 			
 			//demoa varten kysymystyypit
 			//täytyy säilyttää jos muu demodata poistetaan!!!!!
-			QuestionType text = new QuestionType("text");
-			QuestionType radio = new QuestionType("radio");
+			QuestionType text = new QuestionType("textfield");
+			QuestionType radio = new QuestionType("radiobutton");
 			QuestionType checkbox = new QuestionType("checkbox");
 			
 			questionTypeRepository.save(text);

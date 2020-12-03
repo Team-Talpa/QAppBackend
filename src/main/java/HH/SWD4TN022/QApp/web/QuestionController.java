@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.QuestionRepository;
+import HH.SWD4TN022.QApp.domain.QuestionType;
+import HH.SWD4TN022.QApp.domain.QuestionTypeRepository;
 import HH.SWD4TN022.QApp.domain.Survey;
 import HH.SWD4TN022.QApp.domain.SurveyRepository;
 
@@ -27,11 +29,15 @@ public class QuestionController {
 	@Autowired
 	private SurveyRepository surveyRepository;
 	
+	@Autowired
+	private QuestionTypeRepository questiontypeRepository;
 	
+	//retrieves a list of questions for a survey with surveyId
 	@RequestMapping("/questionlist/{id}")
 	public String questions(@PathVariable("id") Long surveyId, Model model) {
 		Survey survey = surveyRepository.findById(surveyId).get();
 		model.addAttribute("questions", survey.getQuestions());
+		model.addAttribute("survey", survey);
 		return "questionlist";
 	}
 
@@ -43,7 +49,7 @@ public class QuestionController {
 		return "addquestion";
 	}
 	
-	//adds a new question
+	//adds a new question to the survey with surveyId
 	@RequestMapping(value = "/addquestion/{id}")
 	public String addQuestionTo(@PathVariable("id") Long surveyId, Model model) {
 
@@ -52,9 +58,15 @@ public class QuestionController {
 		Survey survey = surveyRepository.findById(surveyId).get();
 		question.setSurvey(survey);
 		model.addAttribute("question", question);
+		
+		List<QuestionType> types = (List<QuestionType>) questiontypeRepository.findAll();
+		
+		model.addAttribute("questiontypes", types);
+		
 		return "addquestion";
 	}
 	
+	//saves question 
 	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		questionRepository.save(question);
@@ -64,7 +76,6 @@ public class QuestionController {
 	
 	//TODO
 	//editQuestion() --> editquestion.html 
-	//saveQuestion()
 	//deleteQuestion(), essential crud-function, needed for sprint 1?
 	
 }

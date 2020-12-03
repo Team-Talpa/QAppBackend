@@ -10,10 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> questiontype
 <body>
 
 <div class="container">
@@ -21,55 +18,25 @@
 <h2>Add Question</h2>
 
 <form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
-	<label for="questionBody">Question</label>
-	<textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/></textarea>
+ <label for="questionBody">Question</label>
+
+<textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/></textarea>    
+	
 	<div style="clear: both; display: block; height: 10px;"></div>
 	<input type="hidden" th:field="*{survey.surveyId}" />
 
-	<div style="clear: both; display: block; height: 10px;"></div>
-	
-	<div style="clear: both; display: block; height: 10px;"></div>
-	
 	<label for="questiontypelist">Question type</label>
-	<select id="questiontypelist" th:field="*{​​​​questiontype}​​​​" class="form-control">
-	<option th:each="questiontype : ${​​​​questionTypes}​​​​" th:value="${​​​​questiontype.getQuestionTypeId()}​​​​" th:text="${​​​​questiontype.getQuestionTypeBody()}​​​​"></option>
-	</select>
+	<select id="questiontypelist" th:field="*{questionType}" class="form-control">
 	
+	<!-- lists all questiontypes to dropdown-menu -->
+	<option th:each="qType: ${ questiontypes }" th:value="${qType.questionTypeId}" th:text="${qType.questionTypeBody}"></option>
+	
+	</select>
+
+
 	<div style="clear: both; display: block; height: 10px;"></div>
 
 	<input type="submit" class="btn-primary" value="Save"></input>
-
-</form>
-<!-- 
-<form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
-	<label for="questionBody">Question:</label>
-<<<<<<< HEAD
-	<textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/></textarea>
-	
-	
-	<div style="clear: both; display: block; height: 10px;"></div>
-	<input type="hidden" th:field="*{survey.surveyId}" />
-
-	<div style="clear: both; display: block; height: 10px;"></div>
-
-=======
-
-	<textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/></textarea>
-	
-	<div style="clear: both; display: block; height: 10px;"></div>
-	
-	<label for="questiontypelist">Question type</label>
-	<select id="questiontypelist" th:field="*{​​​​questiontype}​​​​" class="form-control">
-	<option th:each="questiontype : ${​​​​questionTypes}​​​​" th:value="${​​​​questiontype.getQuestionTypeId()}​​​​" th:text="${​​​​questiontype.getQuestionTypeBody()}​​​​"></option>
-	</select>
-	
-	<div style="clear: both; display: block; height: 10px;"></div>
-
-	<input type="hidden" th:field="*{survey.surveyId}" />
-
-	<div style="clear: both; display: block; height: 10px;"></div>
-	
->>>>>>> questiontype
 
 
 	<input type="submit" class="btn-primary" value="Save"></input>

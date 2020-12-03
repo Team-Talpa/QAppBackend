@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import HH.SWD4TN022.QApp.domain.QuestionRepository;
 import HH.SWD4TN022.QApp.domain.QuestionType;
 import HH.SWD4TN022.QApp.domain.QuestionTypeRepository;
 
@@ -21,9 +20,6 @@ public class QuestionTypeController {
 
 	@Autowired
 	private QuestionTypeRepository questionTypeRepository;
-
-	@Autowired
-	private QuestionRepository questionRepository;
 
 	// Endpoint provides a list of questiontypes to addquestion-template
 	@GetMapping("/questiontypelist")
