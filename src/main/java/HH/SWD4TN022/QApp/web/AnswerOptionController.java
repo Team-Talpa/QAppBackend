@@ -32,6 +32,7 @@ public class AnswerOptionController {
 	@Autowired
 	private QuestionRepository questionRepository; 
 	
+	//why do we have this?
 	//method retrieves list of all answeroptions
 	@GetMapping("/answeroptions")
 	public @ResponseBody List<AnswerOption> answerOptionListRest() {
@@ -59,7 +60,9 @@ public class AnswerOptionController {
 			AnswerOption answeroption = new AnswerOption();
 			answeroption.setQuestion(question);
 			
+			model.addAttribute("question", question);
 			model.addAttribute("answerOption", answeroption);
+			model.addAttribute("answerOptions", question.getAnswerOptions());
 			return "addansweroption";
 	}
 

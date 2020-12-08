@@ -62,7 +62,7 @@ public class QuestionController {
 		List<QuestionType> types = (List<QuestionType>) questiontypeRepository.findAll();
 		
 		model.addAttribute("questiontypes", types);
-		
+		model.addAttribute("questions", survey.getQuestions());
 		return "addquestion";
 	}
 	

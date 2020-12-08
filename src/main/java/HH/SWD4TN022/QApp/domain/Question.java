@@ -58,6 +58,7 @@ public class Question {
 		this.questionType = questionType;
 		this.survey = survey;
 		this.answers = new ArrayList<>();
+		this.answerOptions = new ArrayList<>();
 	}
 	
 	public Question(String questionBody, QuestionType questionType, Survey survey, List<Answer> answers) {
@@ -66,6 +67,7 @@ public class Question {
 		this.questionType = questionType;
 		this.survey = survey;
 		this.answers = answers;
+		this.answerOptions = new ArrayList<>();
 	}
 
 	public String getQuestionBody() {

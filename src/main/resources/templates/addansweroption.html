@@ -15,19 +15,30 @@
 
 <div class="container">
 
-<h2>Add Answer Option</h2>
+<h3 th:text="${question.questionBody}"></h3>
+
+ 	<table>
+ 		<tr>
+ 		<th th:if="${answerOptions.size() > 0}">Answer option list</th>
+ 		</tr>
+		<!-- lists all answeroptions of the question -->
+		<tr th:each="answeroption : ${ answerOptions }">
+		<td th:text="${ answeroption.answerOptionBody }">Header</td>
+		</tr>	
+	</table>
+<p></p>
+<h5>Add a new answer option</h5>
 
 <form th:object="${answerOption}" th:action="@{../saveansweroption}" action="#" method="post">
- <label for="answerOptionBody">Answer Option Body</label>
+ <label for="answerOptionBody"></label>
  
 	<textarea type="text" style="widht:400px;" rows="3" id="answerOptionBody" th:field="*{answerOptionBody}" class="form-control "/></textarea>
 	
 	<div style="clear: both; display: block; height: 10px;"></div>
 	<input type="hidden" th:field="*{question.questionId}" />
 
-
+	
 	<div style="clear: both; display: block; height: 10px;"></div>
-
 	<input type="submit" class="btn-primary" value="Save"></input>
 
 </form>

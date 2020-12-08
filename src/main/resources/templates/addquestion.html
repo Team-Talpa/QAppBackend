@@ -15,10 +15,23 @@
 
 <div class="container">
 
-<h2>Add Question</h2>
+<h3 th:text="${question.survey.surveyHeader}"></h3>
 
+<table>
+	<tr>
+	<th th:if="${questions.size() > 0}">Question list</th>
+	</tr>
+	
+	<!-- lists all questions from one survey-->
+	<tr th:each="question : ${ questions }">
+	<!-- <td th:text="${ question.getQuestionId() }">ID</td> -->
+	<td th:text="${ question.getQuestionBody() }">Header</td>
+	</tr>
+</table>
+
+<p></p>
 <form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
- <label for="questionBody">Question</label>
+ <label for="questionBody">Add a new question</label>
 
 <textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/></textarea>    
 	
@@ -38,9 +51,6 @@
 
 	<input type="submit" class="btn-primary" value="Save"></input>
 
-
-	<input type="submit" class="btn-primary" value="Save"></input>
- -->
 </form>
 
 </div>

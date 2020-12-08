@@ -13,17 +13,18 @@
 
 </head>
 <body>
-    <div><h1>Questions</h1></div>
+	<div><h1 th:text="${survey.surveyHeader}"></h1></div>
+    <div><h3>Questions</h3></div>
 
 <table>
 	<tr>
-	<th>ID</th>
-	<th>Header</th>
+	<!-- <th>ID</th> -->
+	<th></th>
 	<th></th>
 	</tr>
 	<!-- lists all questions from one survey-->
 	<tr th:each="question : ${ questions }">
-	<td th:text="${ question.getQuestionId() }">ID</td>
+	<!-- <td th:text="${ question.getQuestionId() }">ID</td> -->
 	<td th:text="${ question.getQuestionBody() }">Header</td>
 	<table>
 		<!-- lists all answeroptions of the question -->
