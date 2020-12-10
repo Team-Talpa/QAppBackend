@@ -17,13 +17,15 @@
 
 <div>
 
-	<form th:object="${survey}" th:action="@{../savesurvey} action="#" method="post">
+	<form th:object="${survey}" th:action="@{../savesurvey}" action="#" method="post">
 
 		<input type="hidden" th:field="*{surveyId}" />
 		
 		<label for="surveyheader">Name</label>
 		<input type="text" id="surveyheader" th:field="*{surveyHeader}">	
 
+		<input type="submit" class="btn-primary" value="Save"></input>
+	
 	</form>
 
 </div>
