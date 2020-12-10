@@ -30,6 +30,9 @@
 <h5>Add a new answer option</h5>
 
 <form th:object="${answerOption}" th:action="@{../saveansweroption}" action="#" method="post">
+ 
+ <input type="hidden" th:field="*{question.survey.surveyId}"/>
+ 
  <label for="answerOptionBody"></label>
  
 	<textarea type="text" style="widht:400px;" rows="3" id="answerOptionBody" th:field="*{answerOptionBody}" class="form-control "></textarea>

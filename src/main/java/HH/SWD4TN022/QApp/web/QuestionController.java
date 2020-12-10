@@ -66,13 +66,11 @@ public class QuestionController {
 		return "addquestion";
 	}
 	
-	//TODO
-	// If-else-rakenne --> jos id on jo olemassa niin ei tallenna uutta kysymystä
 	//saves question 
 	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		questionRepository.save(question);
-		return "redirect:surveylist";
+		return "redirect:questionlist/" + question.getSurvey().getSurveyId();
 	}
 	
 	//edit an existing question
@@ -88,8 +86,12 @@ public class QuestionController {
 	//delete an existing question
 	@RequestMapping(value="/deletequestion/{id}", method = RequestMethod.GET)
 	public String deleteQuestion(@PathVariable("id") Long questionId) {
+		
+		Question question = questionRepository.findById(questionId).get();
+		Long surveyId = question.getSurvey().getSurveyId();
 		questionRepository.deleteById(questionId);
-		return "redirect:../surveylist";
+		
+		return "redirect:../questionlist/" + surveyId;
 	}
 	
 	
