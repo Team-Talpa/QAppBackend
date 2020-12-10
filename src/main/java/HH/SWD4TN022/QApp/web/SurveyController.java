@@ -64,13 +64,28 @@ public class SurveyController {
 	//saves a survey
 	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
 	public String saveSurvey(Survey survey) {
-		//survey.setQuestions(questions); Liittyy alla olevaan keskeneäiseen
+		//survey.setQuestions(questions); Liittyy alla olevaan keskeneräiseen
 		// tarvitsee myös parametrin lista questions
 		surveyRepository.save(survey);
 		return "redirect:surveylist";
 	}
 	
-	//Yritys tehdä surevy form johon voisi 
+	//edit an existing survey
+	@RequestMapping(value="/editsurvey/{id}")
+	public String editSurvey(@PathVariable("id") Long surveyId, Model model) {
+		model.addAttribute("survey", surveyRepository.findById(surveyId));
+		return "editsurvey";
+	}
+	
+	//delete an existing survey
+	@RequestMapping(value="/deletesurvey/{id}", method = RequestMethod.GET)
+	public String deleteSurvey(@PathVariable("id") Long surveyId) {
+		surveyRepository.deleteById(surveyId);
+		return "redirect:../surveylist";
+	}
+	
+	
+	//Yritys tehdä survey form johon voisi 
 	//luodessa surveyn lisätä kysymykset
 	//Ensimmäinen versio joka ei vielä toimi
 	//voi poistaa myöhemmin

@@ -27,9 +27,9 @@
 	<td th:text="${ survey.getSurveyHeader() }">Header</td>
 	
 	<td>&nbsp;<a th:href="@{/questionlist/{id}(id=${survey.surveyId})}" class="btn btn-warning">Questions</a></td>
-	
-	<td> &nbsp;<a th:href="@{/surveys/{id}(id=${survey.surveyId})}" class="btn btn-primary"> View</a></td>
-	<td> &nbsp;<a th:href="@{/addquestion/{id}(id=${survey.surveyId})}" class="btn btn-success"> Add Question</a></td>
+	<td> &nbsp;<a th:href="@{/editsurvey/{id}(id=${survey.surveyId})}" class="btn btn-success">Edit</a></td>
+	<td> &nbsp;<a th:href="@{/deletesurvey/{id}(id=${survey.surveyId})}" class="btn btn-danger">Delete</a></td>
+	<td> &nbsp;<a th:href="@{/surveys/{id}(id=${survey.surveyId})}" class="btn btn-primary">JSON</a></td>
 	</tr>
 </table>
 <p>&nbsp;<a href="/addsurvey" class="btn btn-warning">Add Survey</a></p>

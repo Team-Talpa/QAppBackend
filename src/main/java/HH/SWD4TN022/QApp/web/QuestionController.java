@@ -66,6 +66,8 @@ public class QuestionController {
 		return "addquestion";
 	}
 	
+	//TODO
+	// If-else-rakenne --> jos id on jo olemassa niin ei tallenna uutta kysymystä
 	//saves question 
 	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
@@ -73,10 +75,24 @@ public class QuestionController {
 		return "redirect:surveylist";
 	}
 	
+	//edit an existing question
+	@RequestMapping(value="/editquestion/{id}")
+	public String editQuestion(@PathVariable("id") Long questionId, Model model) {
+		model.addAttribute("survey", questionRepository.findById(questionId));
+		model.addAttribute("question", questionRepository.findById(questionId));
+		List<QuestionType> types = (List<QuestionType>) questiontypeRepository.findAll();
+		model.addAttribute("questiontypes", types);
+		return "editquestion";
+	}
 	
-	//TODO
-	//editQuestion() --> editquestion.html 
-	//deleteQuestion(), essential crud-function, needed for sprint 1?
+	//delete an existing question
+	@RequestMapping(value="/deletequestion/{id}", method = RequestMethod.GET)
+	public String deleteQuestion(@PathVariable("id") Long questionId) {
+		questionRepository.deleteById(questionId);
+		return "redirect:../surveylist";
+	}
+	
+	
 	
 }
 

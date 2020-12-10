@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+ <title>QApp</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+<h2>Edit the selected question</h2>
+
+<div>
+
+<form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
+	<label for="questionBody">Question</label>
+
+	<textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/>    
+	
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<input type="hidden" th:field="*{questionId}" />
+		<input type="hidden" th:field="*{survey.surveyId}" />
+
+		<label for="questiontypelist">Question type</label>
+		
+		<select id="questiontypelist" th:field="*{questionType}" class="form-control">
+	
+		<!-- lists all questiontypes to dropdown-menu -->
+		<option th:each="qType: ${ questiontypes }" th:value="${qType.questionTypeId}" th:text="${qType.questionTypeBody}"></option>
+	
+		</select>
+
+
+	<div style="clear: both; display: block; height: 10px;"></div>
+
+	<input type="submit" class="btn-primary" value="Save changes"></input>
+
+</div>
+
+</body>
+</html>
