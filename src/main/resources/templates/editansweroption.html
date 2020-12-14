@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<title>QApp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h3 th:text="${question.questionBody}"></h3>
+
+ 	<table>
+ 		<tr>
+ 		<th th:if="${answerOptions.size() > 0}">Answer option list</th>
+ 		</tr>
+		<!-- lists all answeroptions of the question -->
+		<tr th:each="answeroption : ${ answerOptions }">
+		<td th:if="${answeroption.answerOptionId != answerOption.answerOptionId}" th:text="${ answeroption.answerOptionBody }">Header</td>
+		</tr>	
+	</table>
+<p></p>
+<h5>Edit the selected answer option</h5>
+
+<form th:object="${answerOption}" th:action="@{../saveansweroption}" action="#" method="post">
+ 
+ <input type="hidden" th:field="*{question.survey.surveyId}"/>
+ 
+ <label for="answerOptionBody"></label>
+ 
+	<textarea type="text" style="widht:400px;" rows="3" id="answerOptionBody" th:field="*{answerOptionBody}" class="form-control "></textarea>
+	
+	<div style="clear: both; display: block; height: 10px;"></div>
+	<input type="hidden" th:field="*{question.questionId}" />
+	<input type="hidden" th:field="*{answerOptionId}" />
+	
+	<div style="clear: both; display: block; height: 10px;"></div>
+	<input type="submit" class="btn-primary" value="Save"></input>
+
+</form>
+
+</div>
+
+</body>
+</html>

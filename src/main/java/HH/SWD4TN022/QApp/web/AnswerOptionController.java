@@ -67,15 +67,37 @@ public class AnswerOptionController {
 	}
 
 	//method to save answerOption, returns to questionlist/surveyId-template
-		@RequestMapping(value = "/saveansweroption", method = RequestMethod.POST)
-		public String saveAnswerOption(AnswerOption answerOption) {
+	@RequestMapping(value = "/saveansweroption", method = RequestMethod.POST)
+	public String saveAnswerOption(AnswerOption answerOption) {
 			
-
-			answerOptionRepository.save(answerOption);
+		answerOptionRepository.save(answerOption);
 			
-			return "redirect:questionlist/" + answerOption.getQuestion().getSurvey().getSurveyId();
-		}
+		return "redirect:questionlist/" + answerOption.getQuestion().getSurvey().getSurveyId();
+	}
 
+		
+	//edit an existing answer option
+	@RequestMapping(value="/editansweroption/{id}")
+	public String editAnsweroption(@PathVariable("id") Long answeroptionId, Model model) {
+		AnswerOption answerOption = answerOptionRepository.findById(answeroptionId).get();
+		Question question = questionRepository.findById(answerOption.getQuestion().getQuestionId()).get();
+		model.addAttribute("question", question);
+		model.addAttribute("answerOption", answerOption);
+		model.addAttribute("answerOptions", question.getAnswerOptions());
+		return "editansweroption";
+	}
+		
+	//delete an existing answer option
+	@RequestMapping(value="/deleteansweroption/{id}", method = RequestMethod.GET)
+	public String deleteAnsweroption(@PathVariable("id") Long answeroptionId) {
+		
+		AnswerOption answeroption = answerOptionRepository.findById(answeroptionId).get();
+		Long surveyId = answeroption.getQuestion().getSurvey().getSurveyId();
+		answerOptionRepository.deleteById(answeroptionId);
+		
+		return "redirect:../questionlist/" + surveyId;
+	}
+		
 
 	
 

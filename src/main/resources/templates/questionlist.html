@@ -32,7 +32,14 @@
 	<table>
 		<!-- lists all answeroptions of the question -->
 		<tr th:each="answeroption : ${ question.answerOptions }">
+		
 		<td>&nbsp;&nbsp;&#8226;<td th:text="${ answeroption.answerOptionBody }">Header</td></td>
+		
+		<td>
+		&nbsp;&nbsp;
+		<a th:href="@{/editansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-warning">Edit</a>
+		<a th:href="@{/deleteansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-danger">Delete</a>
+		</td>
 		</tr>	
 	</table>
 	
