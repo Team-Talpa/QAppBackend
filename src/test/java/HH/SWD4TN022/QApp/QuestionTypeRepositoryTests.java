@@ -21,7 +21,7 @@ public class QuestionTypeRepositoryTests {
 	
 	@Test
 	public void createNewQuestionTypeTest() {
-		QuestionType questionType = new QuestionType("text");
+		QuestionType questionType = new QuestionType("textfield");
 		repository.save(questionType);
 		assertThat(questionType.getQuestionTypeId()).isNotNull();
 	}

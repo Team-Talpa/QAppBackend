@@ -23,6 +23,7 @@ public class SurveyRepositoryTests {
 	@Autowired
 	private SurveyRepository repository;
 	
+	
 	@Test
 	public void createNewSurveyTest() {
 		Survey survey = new Survey("Harry Potter -survey");

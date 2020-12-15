@@ -10,8 +10,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import HH.SWD4TN022.QApp.domain.Answer;
-import HH.SWD4TN022.QApp.domain.AnswerOption;
 import HH.SWD4TN022.QApp.domain.AnswerRepository;
+import HH.SWD4TN022.QApp.domain.Question;
+import HH.SWD4TN022.QApp.domain.QuestionType;
+import HH.SWD4TN022.QApp.domain.Survey;
 
 
 @ExtendWith(SpringExtension.class)
@@ -22,7 +24,10 @@ public class AnswerRepositoryTests {
 	
 	@Test
 	public void createNewAnswerTest() {
-		Answer answer = new Answer();
+		Survey demoSurvey = new Survey("Hyvinvointikysely");
+		QuestionType radio = new QuestionType("radiobutton");
+		Question question = new Question("Mikä koulutusohjelma", radio, demoSurvey);
+		Answer answer = new Answer("Tietojenkäsittelyn koulutusohjelma", question);
 		repository.save(answer);
 		assertThat(answer.getAnswerId()).isNotNull();
 	}
@@ -30,7 +35,7 @@ public class AnswerRepositoryTests {
 	@Test //testataan delete
 	public void deleteAnswer() {
 		List<Answer> answers = (List<Answer>) repository.findAll();
-		Long id = new Long(30);
+		Long id = new Long(31);
 		repository.deleteById(id);
 		assertThat(repository.findById(id)).isNotIn(answers);
 	}

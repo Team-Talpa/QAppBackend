@@ -21,7 +21,7 @@ public class AnswerOptionRepositoryTests {
 	
 	@Test
 	public void createNewAnswerOptionTest() {
-		AnswerOption answerOption = new AnswerOption();
+		AnswerOption answerOption = new AnswerOption("Tietojenkäsittelyn koulutusohjelma");
 		repository.save(answerOption);
 		assertThat(answerOption.getAnswerOptionId()).isNotNull();
 	}
