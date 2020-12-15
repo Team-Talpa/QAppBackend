@@ -111,14 +111,33 @@ public class QAppApplication {
 			answerOptionRepository.save(q7a7);
 			answerOptionRepository.save(q7a8);
 			
+			
 			answerRepository.save(new Answer(q1a1.getAnswerOptionBody(), q1));
 			answerRepository.save(new Answer(q1a1.getAnswerOptionBody(), q1));
-			answerRepository.save(new Answer(q1a3.getAnswerOptionBody(), q2));
-			answerRepository.save(new Answer(q4a1.getAnswerOptionBody(), q3));
+			answerRepository.save(new Answer(q1a1.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q1a1.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q1a1.getAnswerOptionBody(), q1));
+			
+			answerRepository.save(new Answer(q1a5.getAnswerOptionBody(), q1));
+			
+			answerRepository.save(new Answer(q1a2.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q1a2.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q1a2.getAnswerOptionBody(), q1));
+			
+			answerRepository.save(new Answer(q1a3.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q1a3.getAnswerOptionBody(), q1));
+			
+			answerRepository.save(new Answer(q1a4.getAnswerOptionBody(), q1));
+			
+			
+			answerRepository.save(new Answer(q4a1.getAnswerOptionBody(), q4));
+			answerRepository.save(new Answer(q4a1.getAnswerOptionBody(), q4));
+			answerRepository.save(new Answer(q4a1.getAnswerOptionBody(), q4));
+			answerRepository.save(new Answer(q4a1.getAnswerOptionBody(), q4));
 			answerRepository.save(new Answer(q4a2.getAnswerOptionBody(), q4));
 			answerRepository.save(new Answer(q5a1.getAnswerOptionBody(), q5));
-			answerRepository.save(new Answer(q5a2.getAnswerOptionBody(), q1));
-			answerRepository.save(new Answer(q5a3.getAnswerOptionBody(), q2));
+			answerRepository.save(new Answer(q5a2.getAnswerOptionBody(), q5));
+			answerRepository.save(new Answer(q5a3.getAnswerOptionBody(), q5));
 			
 						
 			log.info("list all surveys");

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.com">
+<head>
+<meta charset="utf-8" />
+<title>Answer Statistics</title>
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<script type="text/javascript" >// Load the Visualization API and the piechart package.
+google.charts.load('current', {
+	'packages' : [ 'corechart' ]
+});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(createReport);
+
+function createReport(){
+        
+		let datatable2 = initializeDataTableFromJson();
+        drawChart(datatable2, 'PieChart', 'Answers (REST data)', 'chart_div2' );
+ }
+
+function drawChart (datatable, chartType, chartTitle, chart_div){
+		
+		console.log(datatable);	
+		// Instantiate and draw our chart, passing in some options
+        let chart='PieChart';
+        if (chartType === 'BarChart'){
+		  chart = new google.visualization.BarChart(document.getElementById(chart_div));
+        } else {
+            chart = new google.visualization.PieChart(document.getElementById(chart_div));}
+		chart.draw(datatable, {
+			title : chartTitle,
+			width : 400,
+			height : 240
+		});
+
+}
+
+
+function initializeDataTableFromJson() {
+		
+		/*<![CDATA[/*/
+		var id = [[${questionId}]];
+		/*]]>*/
+			
+		let jsonData = $.ajax({
+			url : "/answerstatistics/" + id,
+			dataType : "json",
+			async : false
+		}).responseText;
+		
+		statistics = JSON.parse(jsonData);
+		console.log(statistics)
+
+		let datatable = new google.visualization.DataTable();
+		console.log("Length: " + statistics.length)
+		datatable.addRows(statistics.length);  // row count
+		let keys; 
+		let key; // key = property name of object
+		let value; 
+		let itemIndex = 0; // item count
+		for (let item of statistics){
+			console.log(item);
+			keys = Object.keys(item); 
+			//for(var j = 0; j < keys.length; j++){
+			for(var j = keys.length-1; j >= 0; j--){
+			    
+				let luku = (keys.length-1) - j;
+				
+				key = keys[j];
+			    
+			    if (itemIndex == 0 ){ 
+
+					datatable.addColumn(typeof item[key], key);
+				}
+			    value = item[key];
+			    datatable.setCell(itemIndex, luku, value);
+			   
+			}
+			itemIndex++;
+		}
+		console.log(datatable);			
+		return datatable;
+}
+
+</script>
+</head>
+<body>
+	<h1>Answer Statistics</h1>
+	<!--Div that will hold the pie chart-->
+	<div id="chart_div2"></div>
+	<div id="chart_div"></div>
+</body>
+</html>

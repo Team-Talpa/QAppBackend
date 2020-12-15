@@ -69,7 +69,8 @@ public class AnswerOptionController {
 	//method to save answerOption, returns to questionlist/surveyId-template
 	@RequestMapping(value = "/saveansweroption", method = RequestMethod.POST)
 	public String saveAnswerOption(AnswerOption answerOption) {
-			
+		
+		
 		answerOptionRepository.save(answerOption);
 			
 		return "redirect:questionlist/" + answerOption.getQuestion().getSurvey().getSurveyId();

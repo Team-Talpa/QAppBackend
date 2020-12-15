@@ -46,7 +46,7 @@ body {
 	</h4>
 	<table>
 		<!-- lists all answeroptions of the question -->
-		
+		<a th:href="@{/statistics/{id}(id=${question.questionId})}" class="btn btn-outline-dark">Stats</a>
 		<a th:href="@{/editquestion/{id}(id=${question.questionId})}" class="btn btn-light">Edit Question</a>&nbsp;
 	<a th:href="@{/deletequestion/{id}(id=${question.questionId})}" class="btn btn-dark">Delete Question</a>
 	<p>&nbsp;</p>
