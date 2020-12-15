@@ -10,10 +10,25 @@
 <title>QApp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-
+<br>
+<br>
 <body>
+ <style>
+body {
 
-<h2>Edit the selected survey</h2>
+	background-image:
+		url(https://images.unsplash.com/photo-1579389083123-53a622ebaec2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+</style>
+<div class="d-flex justify-content-center">
+
+		
+
+			<div class="jumbotron">
+<h2>Edit the name of the survey: </h2>
 
 <div>
 
@@ -21,14 +36,16 @@
 
 		<input type="hidden" th:field="*{surveyId}" />
 		
-		<label for="surveyheader">Name</label>
-		<input type="text" id="surveyheader" th:field="*{surveyHeader}">	
-
-		<input type="submit" class="btn-primary" value="Save"></input>
+		<br>
+<textarea type="text" style="width:350px;" rows="2" id="surveyHeader" th:field="*{surveyHeader}" class="form-control"/></textarea>
+<br>
+		<input type="submit" class="btn btn-primary" value="Save"></input>
+		<a href="/surveylist" class="btn btn-secondary">Return</a>
 	
 	</form>
 
 </div>
-
+</div>
+</div>
 </body>
 </html>

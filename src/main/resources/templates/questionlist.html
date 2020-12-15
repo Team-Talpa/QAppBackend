@@ -12,11 +12,25 @@
 	<!-- <link type="text/css"rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" /> -->
 
 </head>
+<br>
+<br>
 <body>
+  <style>
+body {
+
+	background-image:
+		url(https://images.unsplash.com/photo-1579389083123-53a622ebaec2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+</style>
+<div class="d-flex justify-content-center">
+<div class="jumbotron">
 	<div><h1 th:text="${survey.surveyHeader}"></h1></div>
     <div><h3>Questions</h3></div>
+<br>
 
-<table>
 	
 	<tr>
 	<!-- <th>ID</th> -->
@@ -27,34 +41,41 @@
 	<!-- lists all questions from one survey-->
 	<tr th:each="question : ${ questions }">
 	<!-- <td th:text="${ question.getQuestionId() }">ID</td> -->
+	<h4>
 	<td th:text="${ question.getQuestionBody() }">Header</td>
-	
+	</h4>
 	<table>
 		<!-- lists all answeroptions of the question -->
-		<tr th:each="answeroption : ${ question.answerOptions }">
 		
+		<a th:href="@{/editquestion/{id}(id=${question.questionId})}" class="btn btn-light">Edit Question</a>&nbsp;
+	<a th:href="@{/deletequestion/{id}(id=${question.questionId})}" class="btn btn-dark">Delete Question</a>
+	<p>&nbsp;</p>
+		<tr th:each="answeroption : ${ question.answerOptions }">
+	
 		<td>&nbsp;&nbsp;&#8226;<td th:text="${ answeroption.answerOptionBody }">Header</td></td>
+			
 		
 		<td>
 		&nbsp;&nbsp;
-		<a th:href="@{/editansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-warning">Edit</a>
-		<a th:href="@{/deleteansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-danger">Delete</a>
+		<a th:href="@{/editansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-light">Edit</a>
+		<a th:href="@{/deleteansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-outline-dark">Delete</a>
 		</td>
 		</tr>	
 	</table>
 	
 	<!-- hides the added answeroption-button if questiontype is textfield-->
-	<a th:if="${question.questionType.questionTypeBody != 'textfield'}" th:href="@{/addansweroption/{id}(id=${question.questionId})}" class="btn btn-success">Add Answer Option</a>
+	<br>
+	<a th:if="${question.questionType.questionTypeBody != 'textfield'}" th:href="@{/addansweroption/{id}(id=${question.questionId})}" class="btn btn-outline-success">Add Answer Option</a>
+	<p>&nbsp;</p>
 	
-	<a th:href="@{/editquestion/{id}(id=${question.questionId})}" class="btn btn-warning">Edit Question</a>
-	<a th:href="@{/deletequestion/{id}(id=${question.questionId})}" class="btn btn-danger">Delete Question</a>
 	<p></p>
 	</tr>
 	
-</table>
+
 
 <p>&nbsp;<a th:href="@{/addquestion/{id}(id=${survey.surveyId})}" class="btn btn-success">Add Question</a></p>
-<p>&nbsp;<a href="/surveylist" class="btn btn-warning">Return</a></p>
-
+<p>&nbsp;<a href="/surveylist" class="btn btn-secondary">Return</a></p>
+</div>
+</div>
 </body>
 </html>
