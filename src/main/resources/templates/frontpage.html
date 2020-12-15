@@ -20,7 +20,7 @@
 body {
 
 	background-image:
-		url(https://images.unsplash.com/photo-1579389083123-53a622ebaec2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+		url(https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -32,27 +32,13 @@ body {
 
 			<div class="jumbotron">
 			
-			<h1>Surveys</h1>
+			<h1>Welcome to QApp!</h1>
+			<h2>Choose between back and front</h2>
+			<p>&nbsp;<a href="http://talpa-qapp-front.herokuapp.com/" class="btn btn-light">Front</a></p>
+			<p>&nbsp;<a href="http://talpa-qapp.herokuapp.com/surveylist" class="btn btn-dark">Back</a></p>
 			
-<table>
-	<tr>
-	
-	<th>Header</th>
-	<th></th>
-	</tr>
-	<!-- lists all surveys in the app-->
-	<tr th:each="survey : ${ surveys }">
 
-	<td th:text="${ survey.getSurveyHeader() }">Header</td>
 	
-	<td>&nbsp;<a th:href="@{/questionlist/{id}(id=${survey.surveyId})}" class="btn btn-light">Questions</a></td>
-	<td> &nbsp;<a th:href="@{/editsurvey/{id}(id=${survey.surveyId})}" class="btn btn-secondary">Edit</a></td>
-	
-	<td> &nbsp;<a th:href="@{/surveys/{id}(id=${survey.surveyId})}" class="btn btn-dark">JSON</a></td>
-	<td> &nbsp;<a th:href="@{/deletesurvey/{id}(id=${survey.surveyId})}" class="btn btn-dark">Delete</a></td>
-	</tr>
-</table>
-<p>&nbsp;<a href="/addsurvey" class="btn btn-success">Add Survey</a></p>
 </div>
 </div>
 

@@ -10,7 +10,25 @@
 <title>QApp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<br>
+<br>
 <body>
+   <style>
+body {
+
+	background-image:
+		url(https://images.unsplash.com/photo-1579389083123-53a622ebaec2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+</style>
+<div class="d-flex justify-content-center">
+
+		
+
+			<div class="jumbotron">
+			
 <div class="container">
 <h2>Add Survey</h2>
 <form th:object="${survey}" th:action="@{savesurvey}" action="#" method="post">
@@ -19,7 +37,8 @@
 <div style="clear: both; display: block; height: 10px;"></div>
 
 <div style="clear: both; display: block; height: 10px;"></div>
-<input type="submit" class="btn-primary" value="Save"></input>
+<input type="submit" class="btn btn-primary" value="Save"></input>
+<a href="/surveylist" class="btn btn-secondary">Return</a>
 </form>
 </div>
 </body>

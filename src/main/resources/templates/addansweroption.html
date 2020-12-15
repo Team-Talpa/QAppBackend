@@ -9,9 +9,26 @@
 <title>QApp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-
+<br>
+<br>
 
 <body>
+ <style>
+body {
+
+	background-image:
+		url(https://images.unsplash.com/photo-1579389083123-53a622ebaec2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+</style>
+
+<div class="d-flex justify-content-center">
+
+		
+
+			<div class="jumbotron">
 
 <div class="container">
 
@@ -19,15 +36,15 @@
 
  	<table>
  		<tr>
- 		<th th:if="${answerOptions.size() > 0}">Answer option list</th>
+ 		<th th:if="${answerOptions.size() > 0}">Answer options:</th>
  		</tr>
 		<!-- lists all answeroptions of the question -->
 		<tr th:each="answeroption : ${ answerOptions }">
 		<td th:text="${ answeroption.answerOptionBody }">Header</td>
 		</tr>	
 	</table>
-<p></p>
-<h5>Add a new answer option</h5>
+
+
 
 <form th:object="${answerOption}" th:action="@{../saveansweroption}" action="#" method="post">
  
@@ -35,14 +52,14 @@
  
  <label for="answerOptionBody"></label>
  
-	<textarea type="text" style="widht:400px;" rows="3" id="answerOptionBody" th:field="*{answerOptionBody}" class="form-control "></textarea>
+	<textarea type="text" placeholder="Add new answer option️" style="widht:400px;" rows="3" id="answerOptionBody" th:field="*{answerOptionBody}" class="form-control "></textarea>
 	
 	<div style="clear: both; display: block; height: 10px;"></div>
 	<input type="hidden" th:field="*{question.questionId}" />
 
 	
 	<div style="clear: both; display: block; height: 10px;"></div>
-	<input type="submit" class="btn-primary" value="Save"></input>
+	<input type="submit" class="btn btn-primary" value="Save"></input>
 
 </form>
 

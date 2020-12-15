@@ -10,15 +10,30 @@
  <title>QApp</title>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-
+<br>
+<br>
 <body>
+ <style>
+body {
 
+	background-image:
+		url(https://images.unsplash.com/photo-1579389083123-53a622ebaec2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+</style>
+<div class="d-flex justify-content-center">
+
+		
+
+			<div class="jumbotron">
 <h2>Edit the selected question</h2>
 
 <div>
 
 <form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
-	<label for="questionBody">Question</label>
+	
 
 	<textarea type="text" style="width:400px;" rows="3" id="questionBody" th:field="*{questionBody}" class="form-control "/>    
 	
@@ -38,8 +53,11 @@
 
 	<div style="clear: both; display: block; height: 10px;"></div>
 
-	<input type="submit" class="btn-primary" value="Save changes"></input>
-
+	<input type="submit" class="btn btn-primary" value="Save changes"></input>
+	<!--<a th:href="@{/questionlist/{id}(id=${survey.surveyId})}" class ="btn btn-secondary">Return</a> -->
+</form>
+</div>
+</div>
 </div>
 
 </body>
