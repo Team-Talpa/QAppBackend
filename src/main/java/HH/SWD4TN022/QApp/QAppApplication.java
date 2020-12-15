@@ -36,20 +36,26 @@ public class QAppApplication {
 			
 			//V13, HH-demosurvey
 			
-			/*
-			
 			Survey demoSurvey = new Survey("Hyvinvointikysely Haaga-Helian opiskelijoille");
 			
 			surveyRepository.save(demoSurvey);
 			
+			QuestionType text = new QuestionType("textfield");
+			QuestionType radio = new QuestionType("radiobutton");
+			QuestionType checkbox = new QuestionType("checkbox");
 			
-			Question q1 = new Question("Mikä on koulutusohjelmasi?", demoSurvey);
-			Question q2 = new Question("Milloin olet aloittanut opintosi Haaga-Heliassa? (syksy/kevät ja vuosi)", demoSurvey);
-			Question q3 = new Question("Miltä etätyöskentely on sinusta tuntunut?", demoSurvey);
-			Question q4 = new Question("Ovatko opintosi edenneet poikkeustilanteesta huolimatta tavoitteesi mukaisesti?", demoSurvey);
-			Question q5 = new Question("Aiheuttaako etätyöskentely sinulle lisätyötä verrattuna lähiopetukseen?", demoSurvey);
-			Question q6 = new Question("Koetko, että tarvitsisit tukea etäopiskeluun? Jos tarvitset, niin kerro omin sanoin millaista tukea tarvitsisit.", demoSurvey);
-			Question q7 = new Question("Tiedätkö millaisia opintoihin liittyviä tukipalveluita YTHS ja Haaga-Helia tarjoavat opiskelijoille?", demoSurvey);
+			questionTypeRepository.save(text);
+			questionTypeRepository.save(radio);
+			questionTypeRepository.save(checkbox);
+			
+			
+			Question q1 = new Question("Mikä on koulutusohjelmasi?", radio, demoSurvey);
+			Question q2 = new Question("Milloin olet aloittanut opintosi Haaga-Heliassa? (syksy/kevät ja vuosi, esim. syksy 2019)", text, demoSurvey);
+			Question q3 = new Question("Miltä etätyöskentely on sinusta tuntunut?", text, demoSurvey);
+			Question q4 = new Question("Ovatko opintosi edenneet poikkeustilanteesta huolimatta tavoitteesi mukaisesti?", radio, demoSurvey);
+			Question q5 = new Question("Aiheuttaako etätyöskentely sinulle lisätyötä verrattuna lähiopetukseen?", radio, demoSurvey);
+			Question q6 = new Question("Koetko, että tarvitsisit tukea etäopiskeluun? Jos tarvitset, niin kerro omin sanoin millaista tukea tarvitsisit.", text, demoSurvey);
+			Question q7 = new Question("Millaisia opintoihin liittyviä tukipalveluita YTHS ja Haaga-Helia tarjoavat opiskelijoille?", checkbox, demoSurvey);
 			
 			questionRepository.save(q1);
 			questionRepository.save(q2);
@@ -59,12 +65,71 @@ public class QAppApplication {
 			questionRepository.save(q6);
 			questionRepository.save(q7);
 			
-			*/
+			AnswerOption q1a1 = new AnswerOption("Tietojenkäsittelyn koulutusohjelma" , q1);
+			AnswerOption q1a2 = new AnswerOption("Liiketalouden koulutusohjelma" , q1);
+			AnswerOption q1a3 = new AnswerOption("Journalismin koulutusohjelma" , q1);
+			AnswerOption q1a4 = new AnswerOption("Matkailun koulutusohjelma" , q1);
+			AnswerOption q1a5 = new AnswerOption("Liikunnan ja vapaa-ajan koulutusohjelma" , q1);
+			AnswerOption q1a6 = new AnswerOption("Ei mikään yllä mainituista" , q1);
 			
-			// Demo vastausten kanssa
+			AnswerOption q4a1 = new AnswerOption("Kyllä" , q4);
+			AnswerOption q4a2 = new AnswerOption("Ei" , q4);
 			
+			AnswerOption q5a1 = new AnswerOption("Ei ole aiheuttanut lisätyötä" , q5);
+			AnswerOption q5a2 = new AnswerOption("On aiheuttanut jonkin verran lisätyötä" , q5);
+			AnswerOption q5a3 = new AnswerOption("On aiheuttanut merkittävästi lisätyötä" , q5);
+
+			AnswerOption q7a1 = new AnswerOption("Opintopsykologin vastaanotto" , q7);
+			AnswerOption q7a2 = new AnswerOption("Terveydenhoitajan vastaanotto" , q7);
+			AnswerOption q7a3 = new AnswerOption("Vertaistukiryhmät" , q7);
+			AnswerOption q7a4 = new AnswerOption("Neuvonta-chat" , q7);
+			AnswerOption q7a5 = new AnswerOption("Psykiatrisen sairaanhoitajan vastaanotto" , q7);
+			AnswerOption q7a6 = new AnswerOption("Korkeakoulupappi" , q7);
+			AnswerOption q7a7 = new AnswerOption("Rentoutusjooga" , q7);
+			AnswerOption q7a8 = new AnswerOption("Hyvinvointiretriitti kerran vuodessa" , q7);
+
+			answerOptionRepository.save(q1a1);
+			answerOptionRepository.save(q1a2);
+			answerOptionRepository.save(q1a3);
+			answerOptionRepository.save(q1a4);
+			answerOptionRepository.save(q1a5);
+			answerOptionRepository.save(q1a6);
 			
+			answerOptionRepository.save(q4a1);
+			answerOptionRepository.save(q4a2);
 			
+			answerOptionRepository.save(q5a1);
+			answerOptionRepository.save(q5a2);			
+			answerOptionRepository.save(q5a3);
+			
+			answerOptionRepository.save(q7a1);
+			answerOptionRepository.save(q7a2);
+			answerOptionRepository.save(q7a3);
+			answerOptionRepository.save(q7a4);
+			answerOptionRepository.save(q7a5);
+			answerOptionRepository.save(q7a6);
+			answerOptionRepository.save(q7a7);
+			answerOptionRepository.save(q7a8);
+			
+			answerRepository.save(new Answer(q1a1.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q1a1.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q1a3.getAnswerOptionBody(), q2));
+			answerRepository.save(new Answer(q4a1.getAnswerOptionBody(), q3));
+			answerRepository.save(new Answer(q4a2.getAnswerOptionBody(), q4));
+			answerRepository.save(new Answer(q5a1.getAnswerOptionBody(), q5));
+			answerRepository.save(new Answer(q5a2.getAnswerOptionBody(), q1));
+			answerRepository.save(new Answer(q5a3.getAnswerOptionBody(), q2));
+			
+						
+			log.info("list all surveys");
+
+			  for(Survey s : surveyRepository.findAll()) {
+				log.info(s.toString());
+			  }
+				
+				
+				
+			/*
 			Survey answerSurvey = new Survey ("Haaga-Helian kouluruokakysely");
 			
 			surveyRepository.save(answerSurvey);
@@ -145,9 +210,12 @@ public class QAppApplication {
 			  for(Survey s : surveyRepository.findAll()) {
 				log.info(s.toString());
 
-			}
+			} */
 			  
 		};
+		
+	
 	}
-
 }
+
+
