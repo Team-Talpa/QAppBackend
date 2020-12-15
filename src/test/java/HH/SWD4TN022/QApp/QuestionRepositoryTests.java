@@ -10,7 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.QuestionRepository;
-
+import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -23,5 +23,13 @@ public class QuestionRepositoryTests {
 		Question question = new Question();
 		repository.save(question);
 		assertThat(question.getQuestionId()).isNotNull();
+	}
+	
+	@Test
+	public void deleteQuestion() {
+		List<Question> questions = (List<Question>) repository.findAll();
+		Long id = new Long(5);
+		repository.deleteById(id);
+		assertThat(repository.findById(id)).isNotIn(questions);
 	}
 }
