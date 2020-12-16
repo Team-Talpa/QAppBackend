@@ -50,12 +50,12 @@ public class QAppApplication {
 			
 			
 			Question q1 = new Question("Mikä on koulutusohjelmasi?", radio, demoSurvey);
-			Question q2 = new Question("Milloin olet aloittanut opintosi Haaga-Heliassa? (syksy/kevät ja vuosi, esim. syksy 2019)", text, demoSurvey);
+			Question q2 = new Question("Milloin olet aloittanut opintosi Haaga-Heliassa?", text, demoSurvey);
 			Question q3 = new Question("Miltä etätyöskentely on sinusta tuntunut?", text, demoSurvey);
-			Question q4 = new Question("Ovatko opintosi edenneet poikkeustilanteesta huolimatta tavoitteesi mukaisesti?", radio, demoSurvey);
-			Question q5 = new Question("Aiheuttaako etätyöskentely sinulle lisätyötä verrattuna lähiopetukseen?", radio, demoSurvey);
-			Question q6 = new Question("Koetko, että tarvitsisit tukea etäopiskeluun? Jos tarvitset, niin kerro omin sanoin millaista tukea tarvitsisit.", text, demoSurvey);
-			Question q7 = new Question("Millaisia opintoihin liittyviä tukipalveluita YTHS ja Haaga-Helia tarjoavat opiskelijoille?", checkbox, demoSurvey);
+			Question q4 = new Question("Ovatko opintosi edenneet poikkeustilanteesta huolimatta?", radio, demoSurvey);
+			Question q5 = new Question("Etätyöskentely aiheuttaa lisätyötä verrattuna lähiopetukseen", radio, demoSurvey);
+			Question q6 = new Question("Kerro millaista tukea tarvitsisit etäopiskeluun?", text, demoSurvey);
+			Question q7 = new Question("Millaisia tukipalveluita YTHS tarjoaa opiskelijoille?", checkbox, demoSurvey);
 			
 			questionRepository.save(q1);
 			questionRepository.save(q2);
@@ -75,9 +75,9 @@ public class QAppApplication {
 			AnswerOption q4a1 = new AnswerOption("Kyllä" , q4);
 			AnswerOption q4a2 = new AnswerOption("Ei" , q4);
 			
-			AnswerOption q5a1 = new AnswerOption("Ei ole aiheuttanut lisätyötä" , q5);
-			AnswerOption q5a2 = new AnswerOption("On aiheuttanut jonkin verran lisätyötä" , q5);
-			AnswerOption q5a3 = new AnswerOption("On aiheuttanut merkittävästi lisätyötä" , q5);
+			AnswerOption q5a1 = new AnswerOption("Kyllä" , q5);
+			AnswerOption q5a2 = new AnswerOption("Ei" , q5);
+			AnswerOption q5a3 = new AnswerOption("Jonkin verran" , q5);
 
 			AnswerOption q7a1 = new AnswerOption("Opintopsykologin vastaanotto" , q7);
 			AnswerOption q7a2 = new AnswerOption("Terveydenhoitajan vastaanotto" , q7);
