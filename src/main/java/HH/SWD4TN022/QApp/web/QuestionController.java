@@ -63,6 +63,7 @@ public class QuestionController {
 		
 		model.addAttribute("questiontypes", types);
 		model.addAttribute("questions", survey.getQuestions());
+		model.addAttribute("survey", survey);
 		return "addquestion";
 	}
 	
@@ -76,8 +77,11 @@ public class QuestionController {
 	//edit an existing question
 	@RequestMapping(value="/editquestion/{id}")
 	public String editQuestion(@PathVariable("id") Long questionId, Model model) {
-		model.addAttribute("survey", questionRepository.findById(questionId));
-		model.addAttribute("question", questionRepository.findById(questionId));
+
+		Question question = questionRepository.findById(questionId).get();
+		model.addAttribute("question", question);
+		Survey survey = surveyRepository.findById(question.getSurvey().getSurveyId()).get();
+		model.addAttribute("survey", survey);
 		List<QuestionType> types = (List<QuestionType>) questiontypeRepository.findAll();
 		model.addAttribute("questiontypes", types);
 		return "editquestion";
