@@ -25,24 +25,18 @@ body {
 </style>
 <div class="d-flex justify-content-center">
 
-		
-
 			<div class="jumbotron">
+
 <div class="container">
 
 <h3 th:text="${question.survey.surveyHeader}"></h3>
 
-<table>
-	<tr>
-	<th th:if="${questions.size() > 0}">Questions:</th>
-	</tr>
-	
-	<!-- lists all questions from one survey-->
-	<tr th:each="question : ${ questions }">
-	<!-- <td th:text="${ question.getQuestionId() }">ID</td> -->
-	<td th:text="${ question.getQuestionBody() }">Header</td>
-	</tr>
-</table>
+
+<ul>
+	<li th:each="question : ${ questions }" th:text="${ question.getQuestionBody() }"></li>
+</ul>
+
+
 
 <p></p>
 <form th:object="${question}" th:action="@{../savequestion}" action="#" method="post">
