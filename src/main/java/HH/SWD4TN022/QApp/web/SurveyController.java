@@ -90,26 +90,6 @@ public class SurveyController {
 	}
 	
 	
-	//Yritys tehdä survey form johon voisi 
-	//luodessa surveyn lisätä kysymykset
-	//Ensimmäinen versio joka ei vielä toimi
-	//voi poistaa myöhemmin
-//	@RequestMapping(value = "/addsurvey")
-//	public String addSurvey(Model model) {
-//		
-//		Survey newsurvey = new Survey();
-//		model.addAttribute("survey", newsurvey);
-//		
-//		List<Question> newquestions = new ArrayList<Question>();
-//		for(int i = 0; i > 4; i++) {
-//			Question newquestion = new Question("testi poista", newsurvey);
-//
-//			newquestions.add(newquestion);
-//		}
-//		System.out.print("--->" + newquestions.get(0));
-//		model.addAttribute("questions", newquestions);
-//		
-//		return "addsurvey";
-//	}
+
 	
 }

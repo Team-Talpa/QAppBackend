@@ -45,11 +45,17 @@ body {
 	<td th:text="${ question.getQuestionBody() }">Header</td>
 	</h4>
 	<table>
-		<!-- lists all answeroptions of the question -->
-		<a th:href="@{/statistics/{id}(id=${question.questionId})}" class="btn btn-outline-dark">Stats</a>&nbsp;
+	
+	
+		
+		<!-- shows statistics-button only for questiontype "radiobutton" -->		
+		<a th:if="${question.questionType.questionTypeBody != 'textfield'} and ${question.questionType.questionTypeBody != 'checkbox'}" th:href="@{/statistics/{id}(id=${question.questionId})}" class="btn btn-outline-dark">Statistics</a>&nbsp;	
+		
 		<a th:href="@{/editquestion/{id}(id=${question.questionId})}" class="btn btn-light">Edit Question</a>&nbsp;
-	<a th:href="@{/deletequestion/{id}(id=${question.questionId})}" class="btn btn-dark">Delete Question</a>
-	<p>&nbsp;</p>
+		<a th:href="@{/deletequestion/{id}(id=${question.questionId})}" class="btn btn-dark">Delete Question</a>
+		<p>&nbsp;</p>
+		
+		<!-- lists all answeroptions of the question -->
 		<tr th:each="answeroption : ${ question.answerOptions }">
 	
 		<td>&nbsp;&nbsp;&#8226;<td th:text="${ answeroption.answerOptionBody }">Header</td></td>
@@ -57,6 +63,7 @@ body {
 		
 		<td>
 		&nbsp;&nbsp;
+		
 		<a th:href="@{/editansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-light">Edit</a>
 		<a th:href="@{/deleteansweroption/{id}(id=${answeroption.answerOptionId})}" class="btn btn-outline-dark">Delete</a>
 		</td>
@@ -66,8 +73,9 @@ body {
 	<!-- hides the added answeroption-button if questiontype is textfield-->
 	<br>
 	<a th:if="${question.questionType.questionTypeBody != 'textfield'}" th:href="@{/addansweroption/{id}(id=${question.questionId})}" class="btn btn-outline-success">Add Answer Option</a>
-	<p>&nbsp;</p>
 	
+	
+	<p>&nbsp;</p>
 	<p></p>
 	</tr>
 	
