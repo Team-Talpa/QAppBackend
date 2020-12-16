@@ -146,7 +146,19 @@ public class QAppApplication {
 				log.info(s.toString());
 			  }
 				
+				// Few "empty" surveys to demonstrate the list effect on surveylist.html
+			  
+			  	Survey demoSurvey2 = new Survey("Testi: Harry Potter -kysely");				
+				surveyRepository.save(demoSurvey2);
 				
+				Survey demoSurvey3 = new Survey("Testi: Tyytyväisyyskysely");				
+				surveyRepository.save(demoSurvey3);
+				
+				Survey demoSurvey4 = new Survey("Testi: Elämän tarkoitusta kartoittava kysely");				
+				surveyRepository.save(demoSurvey4);
+				
+				Survey demoSurvey5 = new Survey("Testi: Lemmikkikysely");				
+				surveyRepository.save(demoSurvey5);
 				
 			/*
 			Survey answerSurvey = new Survey ("Haaga-Helian kouluruokakysely");
