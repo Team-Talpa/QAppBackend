@@ -21,6 +21,7 @@ import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.QuestionRepository;
 import HH.SWD4TN022.QApp.domain.QuestionType;
 import HH.SWD4TN022.QApp.domain.Survey;
+import HH.SWD4TN022.QApp.domain.SurveyRepository;
 
 @CrossOrigin
 @Controller
@@ -30,7 +31,10 @@ public class AnswerOptionController {
 	private AnswerOptionRepository answerOptionRepository;
 	
 	@Autowired
-	private QuestionRepository questionRepository; 
+	private QuestionRepository questionRepository;
+	
+	@Autowired
+	private SurveyRepository surveyRepository;
 	
 	//why do we have this?
 	//method retrieves list of all answeroptions
@@ -85,6 +89,8 @@ public class AnswerOptionController {
 		model.addAttribute("question", question);
 		model.addAttribute("answerOption", answerOption);
 		model.addAttribute("answerOptions", question.getAnswerOptions());
+		Survey survey = surveyRepository.findById(question.getSurvey().getSurveyId()).get();
+		model.addAttribute("survey", survey);
 		return "editansweroption";
 	}
 		
