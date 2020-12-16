@@ -26,6 +26,11 @@ public class SurveyController {
 	private SurveyRepository surveyRepository;  
 
 	
+	@GetMapping({"/", "/home"})
+	public String showFrontpage() {
+		return "frontpage";
+	}
+	
 	//REST method to retrieve a list of all surveys
 	@GetMapping("/surveys")
 	public @ResponseBody List<Survey> surveyListRest() {
@@ -39,7 +44,7 @@ public class SurveyController {
     }  
 	
 	//retrives a list of all surveys
-	@GetMapping({"/", "/surveylist"})
+	@GetMapping("/surveylist")
 	public String listSurveys(Model model) {
 		model.addAttribute("surveys", surveyRepository.findAll());
 		return "surveylist";
