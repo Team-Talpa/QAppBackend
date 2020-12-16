@@ -26,6 +26,7 @@ import HH.SWD4TN022.QApp.domain.Question;
 import HH.SWD4TN022.QApp.domain.QuestionRepository;
 import HH.SWD4TN022.QApp.domain.QuestionType;
 import HH.SWD4TN022.QApp.domain.Survey;
+import HH.SWD4TN022.QApp.domain.SurveyRepository;
 import net.minidev.json.JSONObject;
 
 @CrossOrigin
@@ -37,6 +38,9 @@ public class AnswerController {
 	
 	@Autowired
 	private QuestionRepository questionRepository;
+	
+	@Autowired
+	private SurveyRepository surveyRepository;
 	
 	//saves an answer to a question (endpoint has the questionId)
 	@PostMapping("/answers/{id}")
@@ -111,6 +115,11 @@ public class AnswerController {
     public String getAnswerStatistics(@PathVariable("id") Long questionId, Model model){
     	
     	model.addAttribute("questionId", questionId);
+    	
+    	Question question = questionRepository.findById(questionId).get();
+    	Long surveyId = question.getSurvey().getSurveyId();
+    	Survey survey = surveyRepository.findById(surveyId).get();
+    	model.addAttribute("survey", survey);
     	
     	return "statistics"; 
     }

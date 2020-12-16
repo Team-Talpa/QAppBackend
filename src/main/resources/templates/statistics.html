@@ -4,6 +4,10 @@
 <meta charset="utf-8" />
 <title>Answer Statistics</title>
 <!--Load the AJAX API-->
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
@@ -88,10 +92,26 @@ function initializeDataTableFromJson() {
 
 </script>
 </head>
+<br>
+<br>
 <body>
+  <style>
+body {
+
+	background-image:
+		url(https://images.unsplash.com/photo-1579389083123-53a622ebaec2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+</style>
+<div class="d-flex justify-content-center">
+<div class="jumbotron">
 	<h1>Answer Statistics</h1>
 	<!--Div that will hold the pie chart-->
 	<div id="chart_div2"></div>
 	<div id="chart_div"></div>
+	<br>
+	<p>&nbsp;<a th:href="@{/questionlist/{id}(id=${survey.surveyId})}" class="btn btn-secondary">Return</a></p>
 </body>
 </html>
