@@ -26,7 +26,7 @@ public class SurveyController {
 	private SurveyRepository surveyRepository;  
 
 	
-	@GetMapping({"/", "/home"})
+	@GetMapping({"/", "/frontpage"})
 	public String showFrontpage() {
 		return "frontpage";
 	}
